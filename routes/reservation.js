@@ -61,9 +61,9 @@ router.post('/', (req, res, next) => {
 });
 
 //Put
-router.put('/:userId', (req, res, next) => {
+router.put('/:reservationId', (req, res, next) => {
 
-    // const id = req.params.userId;
+    // const id = req.params.reservationId;
     const reservation_date = req.body.reservation_date; 
     const number_of_customers = req.body.number_of_customers;
     const reservation_name = req.body.reservation_name;
@@ -79,7 +79,7 @@ router.put('/:userId', (req, res, next) => {
         id_spot: id_spot,
         reservation_note: reservation_note,
         reservation_status: reservation_status
-    },{ where: { id: req.params.userId }}
+    },{ where: { id: req.params.reservationId }}
     ).then(reservation => {
         if(typeof reservation_date !== "string") {
         res.status(422).json({error: "La date n'est n'est pas bon(on attend un format date)"})
@@ -102,10 +102,10 @@ router.put('/:userId', (req, res, next) => {
 });
 
 //Delete
-router.delete('/:userId', (req, res, next) => {
+router.delete('/:reservationId', (req, res, next) => {
 
-    Reservation.destroy({ 
-        where: { id: req.params.userId }
+    Reservation.destroy({
+        where: { id: req.params.reservationId }
     }
     ).then(reservation => {
         console.log(reservation);

@@ -10,14 +10,14 @@ router.get('/', (req, res, next) => {
 });
 
 /* GET user */
-router.get('/users/:userId', (req, res, next) => {
+router.get('/:userId', (req, res, next) => {
   User.findOne({where : {id: req.params.userId}}).then(users => {
     res.status(200).send(users);
   });
 });
 
 /*POST  user */
-router.post('/user', (req, res, next) => {
+router.post('/', (req, res, next) => {
 
   const user_role = req.body.user_role; 
   const firstname = req.body.firstname;
@@ -46,7 +46,7 @@ router.post('/user', (req, res, next) => {
 });
 
 //Put
-router.put('/user/:userId', (req, res, next) => {
+router.put('/:userId', (req, res, next) => {
 
   const id = req.params.userId;
   const user_role = req.body.user_role; 
@@ -79,7 +79,7 @@ router.put('/user/:userId', (req, res, next) => {
 });
 
 //Delete
-router.delete('/user/:userId', (req, res, next) => {
+router.delete('/:userId', (req, res, next) => {
 
   User.destroy({ 
     where: { id: req.params.userId }
