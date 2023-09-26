@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      number_of_employees: {
+      number_of_customers: {
         type: Sequelize.INTEGER
       },
       reservation_date: {

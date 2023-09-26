@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.use('/user', usersRouter);
-// router.use('/reservation', reservationsRouter);
+router.use('/reservation', reservationsRouter);
 // router.use('/room', roomsRouter);
 // router.use('/spot', spotsRouter);
 
