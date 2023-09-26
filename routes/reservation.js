@@ -1,18 +1,28 @@
 const express = require('express');
 const router = express.Router();
+// const {Sequelize, DataTypes} = require("sequelize");
+// const config = require("../config/config.json")["development"];
 
-const { Reservation } = require('../models/reservation');
+// const sequelize = new Sequelize(config.database, config.username, config.password, {
+//     host: config.host,
+//     dialect: config.dialect
+// });
+
+// const Reservation = require('../models/reservation')(sequelize, DataTypes);
+// console.log(Reservation);
+const { Reservation } = require("../db")
 
 /* GET */
-router.get('/reservations', function(req, res, next) {
+router.get('/', (req, res, next) => {
+    // res.status(200).send("reservation");
     Reservation.findAll().then(Reservations => {
         // Send all reservations to Client
-        res.send(Reservations);
+        res.status(200).json(Reservations);
     });
 });
 
 //Post
-router.post('/reservation', (req, res, next) => {
+router.post('/', (req, res, next) => {
 
     const reservation_date = req.body.reservation_date; 
     const number_of_customers = req.body.number_of_customers;
@@ -51,7 +61,7 @@ router.post('/reservation', (req, res, next) => {
 });
 
 //Put
-router.put('/reservation/:userId', (req, res, next) => {
+router.put('/:userId', (req, res, next) => {
 
     // const id = req.params.userId;
     const reservation_date = req.body.reservation_date; 
@@ -92,7 +102,7 @@ router.put('/reservation/:userId', (req, res, next) => {
 });
 
 //Delete
-router.delete('/reservation/:userId', (req, res, next) => {
+router.delete('/:userId', (req, res, next) => {
 
     Reservation.destroy({ 
         where: { id: req.params.userId }
