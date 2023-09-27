@@ -31,18 +31,20 @@ router.post('/signin', async (req, res) => {
     const user = await User.findOne({
         where: {
             lastname: req.body.lastname, 
-            firstname: req.body.firstname
+            firstname: req.body.firstname,
+            email: req.body.email
         },
     });
     console.log(user);
-    if (!user) return res.status(400).send("Nom d'utilisateur ou mot de passe incorrect");
+    if (!user) return res.status(400).send("Le nom d'utilisateur, l'email ou le mot de passe est incorrect");
 
     const validPassword = await bcrypt.compare(req.body.user_password, user.user_password);
-    if (!validPassword) return res.status(400).send("Nom d'utilisateur ou mot de passe incorrect");
+    if (!validPassword) return res.status(400).send("Le nom d'utilisateur, l'email ou le mot de passe est incorrect");
 
     const payload = {
         lastname: user.lastname,
         firstname : user.firstname,
+        email: user.email,
         user_password : user.user_password
     };
 
