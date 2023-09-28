@@ -8,7 +8,7 @@ const { User } = require("../db")
 const SECRET_KEY = process.env.SECRET_KEY;
 
 // Sign-up (Inscription)
-router.post('/signup', async (req, res) => {
+router.post('/signup', async (req, res, next) => {
     console.log(req.body);
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.user_password, salt);
@@ -21,6 +21,10 @@ router.post('/signup', async (req, res) => {
         phone : req.body.phone,
         user_password: hashedPassword,
     });
+    const userExist = await User.findOne({where: { email: req.body.email }, });
+    console.log(userExist);
+    if (userExist) return res.status(403).json({message: "Vous ne pouvez pas vous inscrire avec ces cordonnées."});
+
     user.save()
         .then(() => res.status(201).json({message: "Utilisateur créé"}))
         .catch(error => res.status(400).json({error}))
