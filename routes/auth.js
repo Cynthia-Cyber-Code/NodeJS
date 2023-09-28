@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
+
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const { User } = require("../db")
-const SECRET_KEY = 'secretkey23456';
+const SECRET_KEY = process.env.SECRET_KEY;
 
 // Sign-up (Inscription)
 router.post('/signup', async (req, res) => {

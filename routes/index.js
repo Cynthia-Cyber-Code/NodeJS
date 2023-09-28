@@ -1,21 +1,23 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-// const bcrypt = require('bcrypt');
+const dotenv = require("dotenv");
 
-const usersRouter = require('./user');
 const authRouter = require('./auth');
 
+const usersRouter = require('./user');
 const reservationsRouter = require('./reservation');
 const roomsRouter = require('./room');
 const spotsRouter = require('./spot');
+
+dotenv.config();
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
   res.json({message: "Launch page"});
 });
 
-const SECRET_KEY = "secretkey23456";
+const SECRET_KEY = process.env.SECRET_KEY;
 
 const verifyJWT = (req, res, next) => {
   const token = req.header('Authorization');
