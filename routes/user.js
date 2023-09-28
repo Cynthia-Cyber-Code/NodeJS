@@ -10,8 +10,8 @@ router.get('/', (req, res, next) => {
 });
 
 /* GET user */
-router.get('/:userId', (req, res, next) => {
-  User.findOne({where : {id: req.params.userId}}).then(users => {
+router.get('/me', (req, res, next) => {
+  User.findOne({where : {id: req.body.userId}}).then(users => {
     res.status(200).send(users);
   });
 });
