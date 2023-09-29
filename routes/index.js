@@ -24,7 +24,7 @@ const verifyJWT = (req, res, next) => {
   if(!token) return res.status(401).json({ auth: false, message: 'Veuillez ajouter un token' });
   try {
     const decoded = jwt.verify(token, SECRET_KEY);
-    req.user = decoded;
+    req.user =  decoded;
     next();
   } catch (e) {
     res.status(400).json({ auth: false, message: 'Token inccorect.' });

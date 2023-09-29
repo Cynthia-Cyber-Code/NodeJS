@@ -12,7 +12,7 @@ const router = express.Router();
 // console.log(Reservation);
 const { Reservation } = require("../db")
 
-/* GET */
+/* GET reservation*/
 router.get('/', (req, res, next) => {
     // res.status(200).send("reservation");
     Reservation.findAll().then(Reservations => {

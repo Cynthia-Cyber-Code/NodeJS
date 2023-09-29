@@ -10,9 +10,16 @@ const SECRET_KEY = process.env.SECRET_KEY;
 // Sign-up (Inscription)
 router.post('/signup', async (req, res, next) => {
     console.log(req.body);
+    const email = req.body.email;
+    const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+    console.log(emailRegexp.test(email));
+    if(!(emailRegexp.test(email))) return res.status(400).json({message: "Veuillez renseigner un email valide."})
+
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.user_password, salt);
     console.log(hashedPassword);
+
     const user = new User ({
         user_role : "customers",
         firstname: req.body.firstname,
@@ -40,11 +47,11 @@ router.post('/signin', async (req, res) => {
             email: req.body.email
         },
     });
-    console.log(user);
-    if (!user) return res.status(400).send("Le nom d'utilisateur, l'email ou le mot de passe est incorrect");
+    // console.log(user);
+    if (!user) return res.status(400).json("Le nom d'utilisateur, l'email ou le mot de passe est incorrect");
 
     const validPassword = await bcrypt.compare(req.body.user_password, user.user_password);
-    if (!validPassword) return res.status(400).send("Le nom d'utilisateur, l'email ou le mot de passe est incorrect");
+    if (!validPassword) return res.status(400).json("Le nom d'utilisateur, l'email ou le mot de passe est incorrect");
 
     const payload = {
         lastname: user.lastname,
@@ -53,11 +60,12 @@ router.post('/signin', async (req, res) => {
         user_password : user.user_password
     };
 
-    console.log(payload);
+    // console.log(payload);
 
     const token = jwt.sign(payload, SECRET_KEY, { expiresIn: 60 * 60 * 24 });
     if (!token) return res.status(500).send(error);
 
+    res.body = token;
     res.status(200).json({message: token});
 });
 

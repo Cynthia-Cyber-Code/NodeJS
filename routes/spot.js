@@ -5,7 +5,7 @@ const { Spot } = require("../db")
 /* GET spots */
 router.get('/', (req, res, next) => {
     Spot.findAll().then(rooms => {
-        res.status(200).send(rooms);
+        res.status(200).json(rooms);
     });
 });
 
