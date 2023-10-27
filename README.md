@@ -1,5 +1,5 @@
 # NodeJS
-Project Node JS sequence 3: BookingHotelApp
+Project Node JS sequence 2: BookingHotelApp
 
 # Back-end
 ## Getting Started with Express generator
