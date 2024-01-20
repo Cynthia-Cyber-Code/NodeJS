@@ -1,5 +1,5 @@
 # NodeJS
-Project Node JS sequence 3: BookingHotelApp
+Project Node JS sequence 2: BookingHotelApp
 
 # Back-end
 ## Getting Started with Express generator
@@ -60,3 +60,52 @@ You may also see any lint errors in the console.
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.
+
+#Resultat
+## For Sign in
+<div>
+ <p>Console</p>
+ <img width="523" alt="Capture d’écran" src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/292803ac-0a5c-4e88-a342-16b6392355d6">
+</div>
+<div>
+  <p>Postman</p>
+  <img src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/788d9997-bd54-4935-8050-b0241145741a" width="350" title="Capture_decran">
+ </div>
+
+## For Sign up
+ <div>
+ <p>Console</p>
+ <img width="523" alt="Capture d’écran" src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/5d214f4f-3b27-4b0d-9652-3993c45b3823">
+
+</div>
+<div>
+  <p>Postman</p>
+  <img src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/18a6294d-70a7-43a8-8201-1c9306ce003b" width="350" title="Capture_decran">
+
+ </div>
+
+##For [route for user current](http://localhost:3000/api/users/me)
+ <div>
+ <p>Console</p>
+ <img width="523" alt="Capture d’écran" src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/75645987-05a8-4df5-830f-16263f324765">
+</div>
+
+<div>
+  <p>Postman</p>
+  <img src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/788d9997-bd54-4935-8050-b0241145741a" width="350" title="Capture_decran">
+ </div>
+
+
+# Tools Used
+  * IDE: Visual Studio Code
+  * Web browser: Google Chrome
+  * Native and graphical database management tool: Table Plus	
+  * Postman: Application for testing APIs
+  
+# Resources consulted
+    * Nodejs: (Nodejs.org), (https://docs.npmjs.com)
+    * Express: (Expressjs.com), (https://docs.npmjs.com), (https://github.com/expressjs/express)
+    * Sequelize: (https://sequelize.org/)
+    * sequelize CLI: (https://github.com/sequelize/cli)
+    * Jest, Testing Web Frameworks: (https://jestjs.io/fr/docs/getting-started)
+    * Supertest: (https://github.com/visionmedia/supertest)
