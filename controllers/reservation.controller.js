@@ -1,28 +1,27 @@
 const express = require('express');
 const router = express.Router();
-// const {Sequelize, DataTypes} = require("sequelize");
-// const config = require("../config/config.json")["development"];
-
-// const sequelize = new Sequelize(config.database, config.username, config.password, {
-//     host: config.host,
-//     dialect: config.dialect
-// });
-
-// const Reservation = require('../models/reservation')(sequelize, DataTypes);
-// console.log(Reservation);
 const { Reservation } = require("../db")
 
 /* GET reservation*/
-router.get('/', (req, res, next) => {
-    // res.status(200).send("reservation");
+exports.allReservations = (req, res, next) => {
     Reservation.findAll().then(Reservations => {
         // Send all reservations to Client
         res.status(200).json(Reservations);
     });
-});
+};
+
+// exports.allReservationsUser = (req, res, next) => {
+//     Reservation.findAll({
+//         where: { id: req.auth.user_id }
+//     }
+//     ).then(reservation => {
+//         console.log(reservation);
+//         res.status(200).json({message: "Reservation delete"});
+//     });
+// };
 
 //Post
-router.post('/', (req, res, next) => {
+exports.addReservation = (req, res, next) => {
 
     const reservation_date = req.body.reservation_date; 
     const number_of_customers = req.body.number_of_customers;
@@ -41,29 +40,29 @@ router.post('/', (req, res, next) => {
         reservation_status: reservation_status
     }).then(reservation => { 
         if(typeof reservation_date !== "string") {
-        res.status(422).json({error: "La date n'est n'est pas bon(on attend un format date)"})
+            return res.status(422).json({error: "La date n'est n'est pas bon(on attend un format date)"})
         }
         if(typeof number_of_customers !== 'number'|| !Number.isInteger(number_of_customers)) {
-        res.status(422).json({error: "Le nombre de convive n'est pas bon(Un nombre entier est attendu)"})
-        }
-        if(!id_spot && !id_room) {
-        res.status(422).json({error: "Vous devez renseigner un spot ou une room"})
+            return res.status(422).json({error: "Le nombre de convive n'est pas bon(Un nombre entier est attendu)"})
         }
         if(typeof reservation_name !== "string") {
-        res.status(422).json({error: "Le nom de la réservation n'est pas bon(Un nom est attendu)"})
+            return res.status(422).json({error: "Le nom de la réservation n'est pas bon(Un nom est attendu)"})
         }
         if(typeof reservation_status !== "number" || !Number.isInteger(reservation_status)) {
-        res.status(422).json({error: "Le status est incorrecte"})
+            return res.status(422).json({error: "Le status est incorrecte"})
         }
         console.log(reservation);
         res.status(200).json({message: "Reservation enregistrée"});
+    }).catch(error => {
+        console.error(error);
+        return res.status(422).json({message: "Error"});
     });
-});
+};
 
 //Put
-router.put('/:reservationId', (req, res, next) => {
+exports.changeReservation = (req, res, next) => {
 
-    // const id = req.params.reservationId;
+    const id = req.body.reservationId;
     const reservation_date = req.body.reservation_date; 
     const number_of_customers = req.body.number_of_customers;
     const reservation_name = req.body.reservation_name;
@@ -79,38 +78,35 @@ router.put('/:reservationId', (req, res, next) => {
         id_spot: id_spot,
         reservation_note: reservation_note,
         reservation_status: reservation_status
-    },{ where: { id: req.params.reservationId }}
+    },{ where: { id: id }}
     ).then(reservation => {
         if(typeof reservation_date !== "string") {
-        res.status(422).json({error: "La date n'est n'est pas bon(on attend un format date)"})
+            return res.status(422).json({error: "La date n'est n'est pas bon(on attend un format date)"})
         }
         if(typeof number_of_customers !== 'number'|| !Number.isInteger(number_of_customers)) {
-        res.status(422).json({error: "Le nombre de convive n'est pas bon(Un nombre entier est attendu)"})
-        }
-        if(!id_spot && !id_room) {
-        res.status(422).json({error: "Vous devez renseigner un spot ou une room"})
+            return res.status(422).json({error: "Le nombre de convive n'est pas bon(Un nombre entier est attendu)"})
         }
         if(typeof reservation_name !== "string") {
-        res.status(422).json({error: "Le nom de la réservation n'est pas bon(Un nom est attendu)"})
+            return res.status(422).json({error: "Le nom de la réservation n'est pas bon(Un nom est attendu)"})
         }
         if(typeof reservation_status !== "number" || !Number.isInteger(reservation_status)) {
-        res.status(422).json({error: "Le status est incorrecte"})
+            return res.status(422).json({error: "Le status est incorrecte"})
         }
         console.log(reservation);
         res.status(200).json({message: "Reservation modifiée"});
     });
-});
+};
 
 //Delete
-router.delete('/:reservationId', (req, res, next) => {
-
+exports.deleteReservation = (req, res, next) => {
     Reservation.destroy({
-        where: { id: req.params.reservationId }
+        where: { id: req.body.reservationId }
     }
     ).then(reservation => {
         console.log(reservation);
         res.status(200).json({message: "Reservation delete"});
-    });
-});
-
-module.exports = router;
+    }).catch(error => {
+        console.error(error)
+        res.status(404).json({message: "Not found"});
+    })
+};

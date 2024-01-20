@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    return queryInterface.bulkInsert("Spot", [{
+    return queryInterface.bulkInsert("Spots", [{
       name: "view facing the sea",
       createdAt: new Date(),
       updatedAt: new Date()
@@ -11,6 +11,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    return queryInterface.bulkDelete('Spot', null, {});
+    return queryInterface.bulkDelete('Spots', null, {});
   }
 };

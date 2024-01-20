@@ -3,19 +3,21 @@ const router = express.Router();
 const { Room } = require("../db")
 
 /* GET rooms */
-router.get('/', (req, res, next) => {
+exports.allRooms = (req, res, next) => {
     Room.findAll().then(rooms => {
         res.status(200).send(rooms);
     });
-});
+};
+
 /* GET room */
-router.get('/:roomId', (req, res, next) => {
-    Room.findOne({where : {id: req.params.roomId}}).then(rooms => {
+exports.room = (req, res, next) => {
+    Room.findOne({where : {id: req.body.roomId}}).then(rooms => {
         res.status(200).send(rooms);
     });
-});
+};
+
 /*POST  room */
-router.post('/', (req, res, next) => {
+exports.postRoom = (req, res, next) => {
 
     Room.create({
 
@@ -23,31 +25,29 @@ router.post('/', (req, res, next) => {
         console.log(room);
         res.status(200).json({message: "Room enregistrée"});
     });
-});
+};
 
 //Put
-router.put('/:roomId', (req, res, next) => {
+exports.putRoom = (req, res, next) => {
     Room.update({
         
     },{ 
-        where: { id: req.params.roomId }
+        where: { id: req.body.roomId }
     }
     ).then(room => { 
         console.log(room);
         res.status(200).json({message: "Room enregistrée"});
     });
-});
+};
 
 //Delete
-router.delete('/:roomId', (req, res, next) => {
+exports.deleteRoom = (req, res, next) => {
 
     Room.destroy({ 
-        where: { id: req.params.roomId }
+        where: { id: req.body.roomId }
     }
     ).then(room => {
         console.log(room);
         res.status(200).json({message: "Room delete"});
     });
-});
-
-module.exports = router;
+};

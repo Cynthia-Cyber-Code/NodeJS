@@ -5,7 +5,7 @@ const { Room } = require('../db');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    return queryInterface.bulkInsert("Room", [{
+    return queryInterface.bulkInsert("Rooms", [{
       roomId: (Math.random() * 10),
       createdAt: new Date(),
       updatedAt: new Date()
@@ -13,6 +13,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    return queryInterface.bulkDelete('Room', null, {});
+    return queryInterface.bulkDelete('Rooms', null, {});
   }
 };
