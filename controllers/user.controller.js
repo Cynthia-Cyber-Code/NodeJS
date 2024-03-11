@@ -1,133 +1,169 @@
-const express = require('express');
-const router = express.Router();
-const { User } = require("../db")
+const bcrypt = require("bcrypt");
+
+const { User } = require("../db");
 
 /* GET users */
 exports.allUsers = (req, res, next) => {
-        User.findAll().then(users => {
-        res.status(200).send(users);
-        });
+  User.findAll().then((users) => {
+    res.status(200).send(users);
+    next();
+  });
 };
 
 /* GET user */
 exports.currentUser = (req, res, next) => {
-    User.findOne({where : {id: req.body.userId}}).then(users => {
-        res.status(200).send(users);
-    });
+  User.findOne({ where: { id: req.auth.userId } }).then((users) => {
+    res.status(200).send(users);
+    next();
+  });
 };
 
-/*POST  user */
-exports.addUserByAdmin = (req, res, next) => {
-    const user_role = req.body.user_role; 
-    const firstname = req.body.firstname;
-    const lastname = req.body.lastname;
-    const email = req.body.email;
-    const phone = req.body.phone;
-    const user_password = req.body.user_password;
+/* POST  user */
+exports.addUserByAdmin = async (req, res) => {
+  console.log(req.body);
+  const { email } = req.body;
+  const { userRole } = req.body; 
+  const { firstName } = req.body;
+  const { lastName } = req.body;
+  const { phone } = req.body;
+  const emailRegexp =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
-    User.create({
-        user_role: user_role,
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        phone: phone,
-        user_password: user_password
-    }).then(user => { 
-        if(typeof user_role !== "string") {
-        res.status(422).json({error: "La date n'est n'est pas bon(on attend un format date)"})
-        }
-        if(typeof firstname !== "string" || typeof lastname !== "string" || typeof email !== "string" || typeof phone !== "string") {
-        res.status(422).json({error: "Verifier vos coordonnées"})
-        }
-        console.log(user);
-        res.status(200).json({message: "enregistrée"});
-    });
+  console.log(emailRegexp.test(email));
+  if (!emailRegexp.test(email)) return res.status(400).json({ message: "Veuillez renseigner un email valide." });
+
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(req.body.userPassword, salt);
+  console.log(hashedPassword);
+
+  const userExist = await User.findOne({ where: { email: email } });
+  if (userExist) return res.status(403).json({message: "Ces coordonées ne peuvent pas s'inscrire."});
+
+  if ((typeof userRole)!= "string") {
+      return res.status(422).json({error: "Le role n'est pas correctement défini"});
+  }
+  if (((typeof firstName) !== "string")|| ((typeof lastName) !== "string") || ((typeof email) !== "string") || ((typeof phone) !== "string")) {
+    return res.status(422).json({ error: "Verifier vos coordonnées" });
+  }
+
+  User.create({
+    userRole: userRole,
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    phone: phone,
+    userPassword: hashedPassword,
+  })
+  .then((user) => {
+    console.log(userExist);
+
+    user
+      .save()
+      .then(() => res.status(201).json({ message: "Utilisateur créé" }))
+      .catch((error) => res.status(400).json({ error }));
+  })
+  .catch((error) => res.status(400).json({ error }));
 };
 
-//Put
+// Put
 exports.modifyCurrentUser = (req, res, next) => {
-    const firstname = req.body.firstname;
-    const lastname = req.body.lastname;
-    const email = req.body.email;
-    const phone = req.body.phone;
-    const user_password = req.body.user_password;
+  const { firstname } = req.body;
+  const { lastname } = req.body;
+  const { email } = req.body;
+  const { phone } = req.body;
+  const { userPassword } = req.body;
 
-    User.update({
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        phone: phone,
-        user_password: user_password
-    },{ 
-        where: { id: req.auth.user_id }
+  User.update(
+    {
+      firstname,
+      lastname,
+      email,
+      phone,
+      userPassword,
+    },
+    {
+      where: { id: req.auth.userId },
+    },
+  ).then((user) => {
+    if (typeof userRole !== "string") {
+      res.status(422).json({
+        error: "La date n'est n'est pas bon(on attend un format date)",
+      });
     }
-    ).then(user => { 
-        if(typeof user_role !== "string") {
-        res.status(422).json({error: "La date n'est n'est pas bon(on attend un format date)"})
-        }
-        if(typeof firstname !== "string" || typeof lastname !== "string" || typeof email !== "string" || typeof phone !== "string") {
-        res.status(422).json({error: "Verifier vos coordonnées"})
-        }
-        console.log(user);
-        res.status(200).json({message: "enregistrée"});
-    });
+    if (
+      typeof firstname !== "string" ||
+      typeof lastname !== "string" ||
+      typeof email !== "string" ||
+      typeof phone !== "string"
+    ) {
+      res.status(422).json({ error: "Verifier vos coordonnées" });
+    }
+    console.log(user);
+    res.status(200).json({ message: "enregistrée" });
+    next();
+  });
 };
 
-//Put users by admin
+// Put users by admin
 exports.modidyUser = (req, res, next) => {
-    const firstname = req.body.firstname;
-    const lastname = req.body.lastname;
-    const email = req.body.email;
-    const phone = req.body.phone;
-    const user_password = req.body.user_password;
+  const { firstname } = req.body;
+  const { lastname } = req.body;
+  const { email } = req.body;
+  const { phone } = req.body;
+  const { userPassword } = req.body;
 
-    User.update({
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        phone: phone,
-        user_password: user_password
-    },{ 
-        where: { id: req.body.userId }
-    }
-    ).then(user => { 
-        console.log(user);
-        res.status(200).json({message: "enregistrée"});
-    });
+  User.update(
+    {
+      firstname,
+      lastname,
+      email,
+      phone,
+      userPassword,
+    },
+    {
+      where: { id: req.auth.userId },
+    },
+  ).then((user) => {
+    console.log(user);
+    res.status(200).json({ message: "enregistrée" });
+    next();
+  });
 };
 
-//Put role isAdmin users
+// Put role isAdmin users
 exports.createAdmin = (req, res, next) => {
-    const user_role = req.body.user_role; 
-    User.update({
-        user_role: "isAdmin",
-    },{ 
-        where: { id: req.params.userId }
-    }
-    ).then(user => { 
-        console.log(user);
-        res.status(200).json({message: "enregistrée"});
-    });
+  User.update(
+    {
+      userRole: "isAdmin",
+    },
+    {
+      where: { id: req.params.userId },
+    },
+  ).then((user) => {
+    console.log(user);
+    res.status(200).json({ message: "enregistrée" });
+    next();
+  });
 };
 
-//Delete
+// Delete
 exports.deleteCurentUser = (req, res, next) => {
-    User.destroy({ 
-        where: { id: req.auth.user_id }
-    }
-    ).then( user => {
-        console.log(user);
-        res.status(200).json({message: "User delete"});
-    });
+  User.destroy({
+    where: { id: req.auth.userId },
+  }).then((user) => {
+    console.log(user);
+    res.status(200).json({ message: "User delete" });
+    next();
+  });
 };
 
-//Delete User
+// Delete User
 exports.deleteCurentUser = (req, res, next) => {
-    User.destroy({ 
-        where: { id: req.body.id }
-    }
-    ).then( user => {
-        console.log(user);
-        res.status(200).json({message: "User delete"});
-    });
+  User.destroy({
+    where: { id: req.body.id },
+  }).then((user) => {
+    console.log(user);
+    res.status(200).json({ message: "User delete" });
+    next();
+  });
 };

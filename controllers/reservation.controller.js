@@ -1,18 +1,17 @@
-const express = require('express');
-const router = express.Router();
-const { Reservation } = require("../db")
+const { Reservation } = require("../db");
 
-/* GET reservation*/
+/* GET reservation */
 exports.allReservations = (req, res, next) => {
-    Reservation.findAll().then(Reservations => {
-        // Send all reservations to Client
-        res.status(200).json(Reservations);
-    });
+  Reservation.findAll().then((Reservations) => {
+    // Send all reservations to Client
+    res.status(200).json(Reservations);
+    next();
+  });
 };
 
 // exports.allReservationsUser = (req, res, next) => {
 //     Reservation.findAll({
-//         where: { id: req.auth.user_id }
+//         where: { id: req.auth.userId }
 //     }
 //     ).then(reservation => {
 //         console.log(reservation);
@@ -20,93 +19,124 @@ exports.allReservations = (req, res, next) => {
 //     });
 // };
 
-//Post
-exports.addReservation = (req, res, next) => {
+// Post
+exports.addReservation = (req, res) => {
+  const { reservationDate } = req.body;
+  const { numberOfCustomers } = req.body;
+  const { reservationName } = req.body;
+  const { spotId } = req.body;
+  const { roomId } = req.body;
+  const { reservationNote } = req.body;
+  const userId = req.auth.userId
+  const reservationStatus = 1;
 
-    const reservation_date = req.body.reservation_date; 
-    const number_of_customers = req.body.number_of_customers;
-    const reservation_name = req.body.reservation_name;
-    const id_spot = req.body.id_spot;
-    const id_room = req.body.id_room;
-    const reservation_note = req.body.reservation_note;
-    const reservation_status = 1;
-
-    Reservation.create({
-        number_of_customers: number_of_customers,
-        reservation_date: reservation_date,
-        reservation_name: reservation_name,
-        id_spot: id_spot,
-        reservation_note: reservation_note,
-        reservation_status: reservation_status
-    }).then(reservation => { 
-        if(typeof reservation_date !== "string") {
-            return res.status(422).json({error: "La date n'est n'est pas bon(on attend un format date)"})
-        }
-        if(typeof number_of_customers !== 'number'|| !Number.isInteger(number_of_customers)) {
-            return res.status(422).json({error: "Le nombre de convive n'est pas bon(Un nombre entier est attendu)"})
-        }
-        if(typeof reservation_name !== "string") {
-            return res.status(422).json({error: "Le nom de la réservation n'est pas bon(Un nom est attendu)"})
-        }
-        if(typeof reservation_status !== "number" || !Number.isInteger(reservation_status)) {
-            return res.status(422).json({error: "Le status est incorrecte"})
-        }
-        console.log(reservation);
-        res.status(200).json({message: "Reservation enregistrée"});
-    }).catch(error => {
-        console.error(error);
-        return res.status(422).json({message: "Error"});
-    });
-};
-
-//Put
-exports.changeReservation = (req, res, next) => {
-
-    const id = req.body.reservationId;
-    const reservation_date = req.body.reservation_date; 
-    const number_of_customers = req.body.number_of_customers;
-    const reservation_name = req.body.reservation_name;
-    const id_spot = req.body.id_spot;
-    const id_room = req.body.id_room;
-    const reservation_note = req.body.reservation_note;
-    const reservation_status = 1;
-
-    Reservation.update({
-        number_of_customers: number_of_customers,
-        reservation_date: reservation_date,
-        reservation_name: reservation_name,
-        id_spot: id_spot,
-        reservation_note: reservation_note,
-        reservation_status: reservation_status
-    },{ where: { id: id }}
-    ).then(reservation => {
-        if(typeof reservation_date !== "string") {
-            return res.status(422).json({error: "La date n'est n'est pas bon(on attend un format date)"})
-        }
-        if(typeof number_of_customers !== 'number'|| !Number.isInteger(number_of_customers)) {
-            return res.status(422).json({error: "Le nombre de convive n'est pas bon(Un nombre entier est attendu)"})
-        }
-        if(typeof reservation_name !== "string") {
-            return res.status(422).json({error: "Le nom de la réservation n'est pas bon(Un nom est attendu)"})
-        }
-        if(typeof reservation_status !== "number" || !Number.isInteger(reservation_status)) {
-            return res.status(422).json({error: "Le status est incorrecte"})
-        }
-        console.log(reservation);
-        res.status(200).json({message: "Reservation modifiée"});
-    });
-};
-
-//Delete
-exports.deleteReservation = (req, res, next) => {
-    Reservation.destroy({
-        where: { id: req.body.reservationId }
-    }
-    ).then(reservation => {
-        console.log(reservation);
-        res.status(200).json({message: "Reservation delete"});
-    }).catch(error => {
-        console.error(error)
-        res.status(404).json({message: "Not found"});
+  Reservation.create({
+    numberOfCustomers,
+    reservationDate,
+    reservationName,
+    reservationNote,
+    reservationStatus,
+    userId,
+    spotId,
+    roomId
+  })
+    .then((reservation) => {
+      if (typeof reservationDate !== "string") {
+        return res.status(422).json({
+          error: "La date n'est n'est pas bon(on attend un format date)",
+        });
+      }
+      if (
+        typeof numberOfCustomers !== "number" ||
+        !Number.isInteger(numberOfCustomers)
+      ) {
+        return res.status(422).json({
+          error:
+            "Le nombre de convive n'est pas bon(Un nombre entier est attendu)",
+        });
+      }
+      if (typeof reservationName !== "string") {
+        return res.status(422).json({
+          error: "Le nom de la réservation n'est pas bon(Un nom est attendu)",
+        });
+      }
+      if (
+        typeof reservationStatus !== "number" ||
+        !Number.isInteger(reservationStatus)
+      ) {
+        return res.status(422).json({ error: "Le status est incorrecte" });
+      }
+      console.log(reservation);
+      return res.status(200).json({ message: "Reservation enregistrée" });
     })
+    .catch((error) => {
+      console.error(error);
+      return res.status(422).json({ message: "Error" });
+    });
+};
+
+// Put
+exports.changeReservation = (req, res) => {
+  const { reservationDate } = req.body;
+  const { numberOfCustomers } = req.body;
+  const { reservationName } = req.body;
+  const { spotId } = req.body;
+  const { roomId } = req.body;
+  const { reservationNote } = req.body;
+
+  Reservation.update(
+    {
+      numberOfCustomers,
+      reservationDate,
+      reservationName,
+      spotId,
+      roomId,
+      reservationNote,
+    },
+    { where: { id: req.body.reservationId, userId: req.auth.userId } },
+  ).then((reservation) => {
+    if (typeof reservationDate !== "string") {
+      return res.status(422).json({
+        error: "La date n'est n'est pas bon(on attend un format date)",
+      });
+    }
+    if (
+      typeof numberOfCustomers !== "number" ||
+      !Number.isInteger(numberOfCustomers)
+    ) {
+      return res.status(422).json({
+        error:
+          "Le nombre de convive n'est pas bon(Un nombre entier est attendu)",
+      });
+    }
+    if (typeof reservationName !== "string") {
+      return res.status(422).json({
+        error: "Le nom de la réservation n'est pas bon(Un nom est attendu)",
+      });
+    }
+    if (
+      typeof reservationStatus !== "number" ||
+      !Number.isInteger(reservationStatus)
+    ) {
+      return res.status(422).json({ error: "Le status est incorrecte" });
+    }
+    console.log(reservation);
+    return res.status(200).json({ message: "Reservation modifiée" });
+  });
+};
+
+// Delete
+exports.deleteReservation = (req, res, next) => {
+  Reservation.destroy({
+    where: { id: req.body.reservationId, userId: req.auth.userId },
+  })
+    .then((reservation) => {
+      console.log(reservation);
+      res.status(200).json({ message: "Reservation delete" });
+      next();
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(404).json({ message: "Not found" });
+    });
 };

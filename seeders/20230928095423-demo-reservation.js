@@ -1,20 +1,20 @@
-'use strict';
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    return queryInterface.bulkInsert("Reservations", [{
-      number_of_customers : 8,
-      reservation_date : "2026-01-01",
-      reservation_name: "Marthy",
-      reservation_note: "Pas de note",
-      reservation_status: 1,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }]);
+  async up(queryInterface) {
+    return queryInterface.bulkInsert("Reservations", [
+      {
+        numberOfCustomers: 8,
+        reservationDate: "2026-01-01",
+        reservationName: "Marthy",
+        reservationNote: "Pas de note",
+        reservationStatus: 1,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
   },
 
-  async down (queryInterface, Sequelize) {
-    return queryInterface.bulkDelete('Reservations', null, {});
-  }
+  async down(queryInterface) {
+    return queryInterface.bulkDelete("Reservations", null, {});
+  },
 };

@@ -2,27 +2,15 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Reservations', {
+    await queryInterface.createTable('Rooms', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      number_of_customers: {
-        type: Sequelize.INTEGER
-      },
-      reservation_date: {
-        type: Sequelize.DATE
-      },
-      reservation_name: {
+      name: {
         type: Sequelize.STRING
-      },
-      reservation_note: {
-        type: Sequelize.STRING
-      },
-      reservation_status: {
-        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -35,6 +23,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Reservations');
+    await queryInterface.dropTable('Rooms');
   }
 };
