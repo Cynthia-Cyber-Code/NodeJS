@@ -52,17 +52,25 @@ You may also see any lint errors in the console.
     * use [bycript framework](https://github.com/kelektiv/node.bcrypt.js) to encrypt the password.
     * use [jsonwebtoken framework](https://github.com/auth0/node-jsonwebtoken) to return a token and to secure the database routes.
        * [JWT](https://jwt.io/)
+     
+  * Add Rules with ESLINT and Prettier
+    * use [Airbnb-base](https://github.com/airbnb/javascript)
+    * use [Prettier](https://prettier.io/docs/en/) as priority compared with ESLINT rules
+    ### `npm run lint`
+      <img width="200" alt="Capture d’écran" src="">
+      </n>
   
-  * Add test for the route GET: http://localhost:3000/api/reservations with Jest ans Supertest
+  * Add test for the route GET: http://localhost:3000/api/reservations with Jest and Supertest
     * Jest, Testing Web Frameworks
     * [Supertest](https://github.com/visionmedia/supertest)
-
-### `npm test`
-
+     ### `npm test`
+       <img width="200" alt="Capture d’écran" src="">
+       </n>
+   
 Launches the test runner in the interactive watch mode.
 
-#Resultat
-## For Sign in
+# Resultat
+## [For Sign in](http://localhost:3000/api/auth/signin)
 <div>
  <p>Console</p>
  <img width="523" alt="Capture d’écran" src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/292803ac-0a5c-4e88-a342-16b6392355d6">
@@ -72,7 +80,7 @@ Launches the test runner in the interactive watch mode.
   <img src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/788d9997-bd54-4935-8050-b0241145741a" width="350" title="Capture_decran">
  </div>
 
-## For Sign up
+## [For Sign up](http://localhost:3000/api/auth/signup)
  <div>
  <p>Console</p>
  <img width="523" alt="Capture d’écran" src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/5d214f4f-3b27-4b0d-9652-3993c45b3823">
@@ -84,7 +92,7 @@ Launches the test runner in the interactive watch mode.
 
  </div>
 
-##For [route for user current](http://localhost:3000/api/users/me)
+## [For route for user current](http://localhost:3000/api/users/me)
  <div>
  <p>Console</p>
  <img width="523" alt="Capture d’écran" src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/75645987-05a8-4df5-830f-16263f324765">
@@ -105,6 +113,8 @@ Launches the test runner in the interactive watch mode.
 # Resources consulted
     * Nodejs: (Nodejs.org), (https://docs.npmjs.com)
     * Express: (Expressjs.com), (https://docs.npmjs.com), (https://github.com/expressjs/express)
+    * Eslint: (https://eslint.org/docs/latest/), (https://www.npmjs.com/package/eslint)
+    * Prettier: (https://prettier.io/docs/en/), (https://www.npmjs.com/package/prettier)
     * Sequelize: (https://sequelize.org/)
     * sequelize CLI: (https://github.com/sequelize/cli)
     * Jest, Testing Web Frameworks: (https://jestjs.io/fr/docs/getting-started)
