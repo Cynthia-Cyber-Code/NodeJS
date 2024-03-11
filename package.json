@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node --watch ./bin/www",
+    "lint": "./node_modules/.bin/eslint .",
     "test": "jest"
   },
   "dependencies": {
