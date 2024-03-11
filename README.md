@@ -57,14 +57,14 @@ You may also see any lint errors in the console.
     * use [Airbnb-base](https://github.com/airbnb/javascript)
     * use [Prettier](https://prettier.io/docs/en/) as priority compared with ESLINT rules
     ### `npm run lint`
-      <img width="200" alt="Capture d’écran" src="">
+      <img width="200" alt="Capture d’écran" src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/58e8c2d6-bf2c-4ad7-98b9-cc3a30d2c77d">
       </n>
   
   * Add test for the route GET: http://localhost:3000/api/reservations with Jest and Supertest
     * Jest, Testing Web Frameworks
     * [Supertest](https://github.com/visionmedia/supertest)
      ### `npm test`
-       <img width="200" alt="Capture d’écran" src="">
+       <img width="200" alt="Capture d’écran" src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/93cbdebb-5fae-49d0-ba2d-8618b0fce3ed">
        </n>
    
 Launches the test runner in the interactive watch mode.
