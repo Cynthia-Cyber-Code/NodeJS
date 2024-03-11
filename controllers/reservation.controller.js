@@ -27,7 +27,7 @@ exports.addReservation = (req, res) => {
   const { spotId } = req.body;
   const { roomId } = req.body;
   const { reservationNote } = req.body;
-  const userId = req.auth.userId
+  const { userId } = req.auth;
   const reservationStatus = 1;
 
   Reservation.create({
@@ -38,7 +38,7 @@ exports.addReservation = (req, res) => {
     reservationStatus,
     userId,
     spotId,
-    roomId
+    roomId,
   })
     .then((reservation) => {
       if (typeof reservationDate !== "string") {
@@ -113,12 +113,6 @@ exports.changeReservation = (req, res) => {
       return res.status(422).json({
         error: "Le nom de la réservation n'est pas bon(Un nom est attendu)",
       });
-    }
-    if (
-      typeof reservationStatus !== "number" ||
-      !Number.isInteger(reservationStatus)
-    ) {
-      return res.status(422).json({ error: "Le status est incorrecte" });
     }
     console.log(reservation);
     return res.status(200).json({ message: "Reservation modifiée" });

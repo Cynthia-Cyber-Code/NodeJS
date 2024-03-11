@@ -20,7 +20,7 @@ exports.postRoom = (req, res, next) => {
   const { name } = req.body;
 
   Room.create({
-    name
+    name,
   }).then((room) => {
     console.log(room);
     res.status(200).json({ message: "Room enregistrée" });
@@ -33,7 +33,7 @@ exports.putRoom = (req, res, next) => {
   const { name } = req.body;
   Room.update(
     {
-      name
+      name,
     },
     {
       where: { id: req.body.roomId },

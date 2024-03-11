@@ -19,10 +19,10 @@ exports.currentUser = (req, res, next) => {
 };
 
 /* POST  user */
-exports.addUserByAdmin = async (req, res) => {
+exports.addUserByAdmin = async (req, res, next) => {
   console.log(req.body);
   const { email } = req.body;
-  const { userRole } = req.body; 
+  const { userRole } = req.body;
   const { firstName } = req.body;
   const { lastName } = req.body;
   const { phone } = req.body;
@@ -30,39 +30,53 @@ exports.addUserByAdmin = async (req, res) => {
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
   console.log(emailRegexp.test(email));
-  if (!emailRegexp.test(email)) return res.status(400).json({ message: "Veuillez renseigner un email valide." });
+  if (!emailRegexp.test(email))
+    return res
+      .status(400)
+      .json({ message: "Veuillez renseigner un email valide." });
 
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(req.body.userPassword, salt);
   console.log(hashedPassword);
 
-  const userExist = await User.findOne({ where: { email: email } });
-  if (userExist) return res.status(403).json({message: "Ces coordonées ne peuvent pas s'inscrire."});
+  const userExist = await User.findOne({ where: { email } });
+  if (userExist)
+    return res
+      .status(403)
+      .json({ message: "Ces coordonées ne peuvent pas s'inscrire." });
 
-  if ((typeof userRole)!= "string") {
-      return res.status(422).json({error: "Le role n'est pas correctement défini"});
+  if (typeof userRole !== "string") {
+    return res
+      .status(422)
+      .json({ error: "Le role n'est pas correctement défini" });
   }
-  if (((typeof firstName) !== "string")|| ((typeof lastName) !== "string") || ((typeof email) !== "string") || ((typeof phone) !== "string")) {
+  if (
+    typeof firstName !== "string" ||
+    typeof lastName !== "string" ||
+    typeof email !== "string" ||
+    typeof phone !== "string"
+  ) {
     return res.status(422).json({ error: "Verifier vos coordonnées" });
   }
 
   User.create({
-    userRole: userRole,
-    firstName: firstName,
-    lastName: lastName,
-    email: email,
-    phone: phone,
+    userRole,
+    firstName,
+    lastName,
+    email,
+    phone,
     userPassword: hashedPassword,
   })
-  .then((user) => {
-    console.log(userExist);
+    .then((user) => {
+      console.log(userExist);
 
-    user
-      .save()
-      .then(() => res.status(201).json({ message: "Utilisateur créé" }))
-      .catch((error) => res.status(400).json({ error }));
-  })
-  .catch((error) => res.status(400).json({ error }));
+      user
+        .save()
+        .then(() => res.status(201).json({ message: "Utilisateur créé" }))
+        .catch((error) => res.status(400).json({ error }));
+    })
+    .catch((error) => res.status(400).json({ error }));
+  return next();
 };
 
 // Put

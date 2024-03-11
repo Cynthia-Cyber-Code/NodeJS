@@ -37,7 +37,7 @@ exports.getSpot = (req, res, next) => {
 exports.postSpot = (req, res, next) => {
   const { name } = req.body;
   Spot.create({
-    name
+    name,
   })
     .then((spot) => {
       console.log(spot);
@@ -57,18 +57,21 @@ exports.putSpot = (req, res) => {
   const { name } = req.body;
   Spot.update(
     {
-      name
+      name,
     },
     {
       where: { id: req.body.spotId },
     },
-  ).then((spot) => {
+  )
+    .then((spot) => {
       console.log(spot);
       res.status(200).json({ message: "Spot enregistrée" });
     })
     .catch((error) => {
       console.error();
-      res.status(500).json({ message: "Impossibilité de modifier ce spot", error });
+      res
+        .status(500)
+        .json({ message: "Impossibilité de modifier ce spot", error });
     });
 };
 
@@ -83,6 +86,8 @@ exports.deleteSpot = (req, res) => {
     })
     .catch((error) => {
       console.error();
-      res.status(500).json({ message: "Impossibilité de supprimer ce spot", error });
+      res
+        .status(500)
+        .json({ message: "Impossibilité de supprimer ce spot", error });
     });
 };
