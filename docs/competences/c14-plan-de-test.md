@@ -18,7 +18,7 @@
 
 | Tâche                                 | Validée | Lien vers le fichier/ligne de code |
 | ------------------------------------- | :-----: | ---------------------------------- |
-| 🔜 Élaboration de la matrice de test |   ⏳    |        (tests)[]                             |
+| 🔜 Élaboration de la matrice de test |   ⏳    |[tests file](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/__test__/app.test.js), [screen valide test](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/docs/Screens/Screen%20Test%20validated.png)|
 
 ## Tests
 
@@ -26,8 +26,8 @@
 
 | Tâche                                                 | Validée | Lien vers le fichier/ligne de code |
 | ----------------------------------------------------- | :-----: | ---------------------------------- |
-| Implémentation des tests unitaires avec Jest          |   ⏳    |      (tests)[]                              |
-| Implémentation des tests d'intégration avec Supertest |   ⏳    |       (tests)[]                              |
+| Implémentation des tests unitaires avec Jest          |   ⏳    |[Jest module](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/package.json#L33), [Jest command](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/package.json#L8), [tests file](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/__test__/app.test.js)|
+| Implémentation des tests d'intégration avec Supertest |   ⏳    |[Supertest Module](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/package.json#L36), [tests file](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/__test__/app.test.js)|
 
 ### Tests Fonctionnels
 
