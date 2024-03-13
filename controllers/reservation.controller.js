@@ -1,11 +1,15 @@
 const { Reservation } = require("../db");
 
 /* GET reservation */
-exports.allReservations = (req, res, next) => {
-  Reservation.findAll().then((Reservations) => {
+exports.allReservations = (req, res) => {
+  Reservation.findAll()
+  .then((reservations) => {
     // Send all reservations to Client
-    res.status(200).json(Reservations);
-    next();
+    return res.status(200).json(reservations);
+  })
+  .catch((error) => {
+    console.error(error);
+    return res.status(422).json({ "error": error });
   });
 };
 
@@ -17,6 +21,10 @@ exports.allReservationsUser = (req, res) => {
     ).then(reservation => {
         console.log(reservation);
         res.status(200).json({reservation});
+    })
+    .catch((error) => {
+      console.error(error);
+      return res.status(422).json({ "error": error });
     });
 };
 

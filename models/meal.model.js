@@ -1,17 +1,12 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
-const { Reservation } = require('../db');
+const { Model } = require('sequelize');
+const { Reservation } = require("./reservation.model");
+
 module.exports = (sequelize, DataTypes) => {
   class Meal extends Model {
     static associate(models) {
-      Meal.belongsTo(models.Reservation, {
+      Meal.hasOne(Reservation, {
         foreignKey: 'reservationId',
-        onDelete: 'CASCADE'
-      })
-      Reservation.hasOne(models.Meal, {
-        foreignKey: 'id',
         onDelete: 'CASCADE'
       })
     }

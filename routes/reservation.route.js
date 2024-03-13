@@ -7,13 +7,14 @@ const reservationController = require("../controllers/reservation.controller");
 const MealController = require("../controllers/Meal.controller");
 
 function hasRole(roles) {
-  return async (req, res) => {
+  return async (req, res, next) => {
     const user = await User.findOne({ where: { id: req.auth.userId } });
     if (!user || !roles.includes(user.userRole)) {
       return res
         .status(403)
         .send({ error: { status: 403, message: "Access denied." } });
     }
+    next();
     return user;
   };
 }

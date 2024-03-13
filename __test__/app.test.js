@@ -17,8 +17,8 @@ describe("POST /api/auth/signup", () => {
       .post("/api/auth/signup")
       .expect("Content-Type", /json/)
       .send({
-        firstname: "Corentin",
-        lastname: "marvin",
+        firstName: "Corentin",
+        lastName: "marvin",
         email: "CorentinM@mail.com",
         phone: "00.00.00.00.00",
         userPassword: "Azerty1234",
@@ -51,7 +51,7 @@ describe("POST /api/auth/signin", () => {
       .post("/api/auth/signin")
       .expect("Content-Type", /json/)
       .send({
-        email: "NMBC@mail.com",
+        email: "CorentinM@mail.com",
         userPassword: "Azerty1234",
       })
       .expect(200);
