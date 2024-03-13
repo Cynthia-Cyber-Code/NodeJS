@@ -26,7 +26,7 @@
 | Tâche                                | Validée | Validation |
 | ------------------------------------ | :-----: | ---------- |
 | Création des modèles de données      |   ❌    |            |
-| Implémentation du champ updatedAt    |   ⏳    |[updatedAt](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/seeders/20230928094833-demo-user.js#L13), [Exemple Screen Table Plus with updatedAt in User]()|
+| Implémentation du champ updatedAt    |   ⏳    |[updatedAt](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/seeders/20230928094833-demo-user.js#L13), [Exemple Screen Table Plus with updatedAt in User](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0b5d7cdae90708c29d3dc4ff8ba694faf896edc5/docs/Screens/updatedAt%20in%20User%20Model%20about%20TablePlus.png)|
 | Accès aux données restreint par rôle |   ⏳    |[Function Role](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/b6d7113d9c4b6d4a97853232cbd793d5b06575f5/routes/user.route.js#L9), [Exemple AllUsers](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/b6d7113d9c4b6d4a97853232cbd793d5b06575f5/routes/user.route.js#L22)|
 
 ## Validation et Sanitisation des Données

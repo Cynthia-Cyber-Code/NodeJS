@@ -18,9 +18,9 @@
 | ---------------------------------------------------- | :-----: | ---------- |
 | Setup indiqué dans la documentation                  |   ❌    |            |
 | Fichier et dossier modèle                            |   ⏳    |[Modèles](https://github.com/Cynthia-Cyber-Code/NodeJS/tree/70ba3ef0f0994c46ecb428888e0dc23d8be8f3d5/models), [Exemple User Model](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/models/user.model.js)|
-| Génération de seed automatisée                       |   ⏳    |[seeders](https://github.com/Cynthia-Cyber-Code/NodeJS/tree/0033700a12c50bddef73d765e9df0ab0ff790c23/seeders),[Screen Launch seed datatbase]()|
+| Génération de seed automatisée                       |   ⏳    |[seeders](https://github.com/Cynthia-Cyber-Code/NodeJS/tree/0033700a12c50bddef73d765e9df0ab0ff790c23/seeders),[Screen Launch seed datatbase](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0b5d7cdae90708c29d3dc4ff8ba694faf896edc5/docs/Screens/%C2%A0Screen%20launch%20screen%20seed%20all%20with%20sequelize-cli%C2%A0.png)|
 | Implémentation de différence base (dev/test/preprod) |   ⏳    |[import config Database](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/db.js#L6)|
-| Fichier de config + .env éventuellement              |   ⏳    |[gitignore](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/.gitignore#L2), [Screen placement config.js dans l'arborescence](), [Screen placement .env]()|
+| Fichier de config + .env éventuellement              |   ⏳    |[gitignore](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/.gitignore#L2), [Screen placement config.js dans l'arborescence](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0b5d7cdae90708c29d3dc4ff8ba694faf896edc5/docs/Screens/screen%20config.js%20file%20position.png), [Screen placement .env](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0b5d7cdae90708c29d3dc4ff8ba694faf896edc5/docs/Screens/screen%20.env%20file.png)|
 
 ## Convention
 
