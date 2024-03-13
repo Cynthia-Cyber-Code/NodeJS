@@ -22,14 +22,16 @@ The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
 # Add a bdd format Postgres according to pre-established diagrams
-<p>
- <h3>UseCase diagram</h3>
- <img src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/797db09b-db6d-4aba-a7de-254db84fe508" width="350" title="Capture_decran_2023-08-30_a_09 11 49">
-</p>
-<p>
- <h3>Uml diagram</h3>
- <img src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/7b108113-28da-4360-8353-8153c34aa3c8" width="350" title="Capture_decran_2023-08-30_a_16 47 52">
-</p>
+<div align="center">
+  <p>
+   <h3>UseCase diagram</h3>
+   <img src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/797db09b-db6d-4aba-a7de-254db84fe508" width="350" title="Capture_decran_2023-08-30_a_09 11 49">
+ </p>
+ <p>
+   <h3>Uml diagram</h3>
+   <img src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/7b108113-28da-4360-8353-8153c34aa3c8" width="350" title="Capture_decran_2023-08-30_a_16 47 52">
+  </p>
+</div>
 
 ## PostgreSQL also known as Postgres, is a free and open-source relational database management system.
 
