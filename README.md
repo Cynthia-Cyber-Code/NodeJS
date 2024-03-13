@@ -69,6 +69,30 @@ You may also see any lint errors in the console.
    
 Launches the test runner in the interactive watch mode.
 
+# Installation
+## Module Install
+      npm install
+ This command install package module need for the project.
+## Import config.js and .env files
+   * Create a config.js file in config case
+<div>
+     <img width="200" alt="Capture d’écran" src="">
+     <img width="200" alt="Capture d’écran" src="">
+</div>
+   * Create a .env in root at the root of the project
+<div>
+     <img width="200" alt="Capture d’écran" src="">
+     <img width="200" alt="Capture d’écran" src="">
+</div>
+
+## Create Models with Sequelize-cli
+       npx sequelize-cli db:migrate
+       npx sequelize-cli db:seed:all
+ These commands create and install the model and seed in database.
+## Launch 
+      npm start
+This command launch the server.
+
 # Resultat
 ## [For Sign in](http://localhost:3000/api/auth/signin)
 <div>
