@@ -19,7 +19,7 @@
 | Tâche                                                           | Validée | Lien |
 | --------------------------------------------------------------- | ------- | ---- |
 | Création des dossiers et fichiers Routes (User, Room, Spot...)  | ⏳      | [Routes](https://github.com/Cynthia-Cyber-Code/NodeJS/tree/main/routes)     |
-| Création des dossiers et fichiers Modèles (User, Room, Spot...) | ⏳      | (Modèles)[]   |
+| Création des dossiers et fichiers Modèles (User, Room, Spot...) | ⏳      | [Modèles](models)   |
 | Mise en place des contrôleurs (User, Room, Spot...)             | ⏳      | (controllers)[]    |
 | 🔜 Implémenter les services                                    | ⏳      |      |
 
