@@ -75,14 +75,16 @@ Launches the test runner in the interactive watch mode.
  This command install package module need for the project.
 ## Import config.js and .env files
    * Create a config.js file in config case
-<div>
-     <img width="200" alt="Capture d’écran" src="">
-     <img width="200" alt="Capture d’écran" src="">
+<div align="center">
+    <img width="200" alt="screen config js file position" src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/5973b665-194a-4b81-8136-787e212b0edb">
+ &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <img width="200" alt="Exemple config js file" src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/1e11655f-c6d6-4d4b-9d6f-d034703a1b91">
 </div>
    * Create a .env in root at the root of the project
-<div>
-     <img width="200" alt="Capture d’écran" src="">
-     <img width="200" alt="Capture d’écran" src="">
+<div align="center">
+    <img width="200" alt="screen env file" src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/4759ee32-f578-4bfc-97b7-70d794f7dcde">
+ &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <img width="200" alt="Exemple data in  env file" src="https://github.com/Cynthia-Cyber-Code/NodeJS/assets/80052585/8c7d129c-4c49-43a3-9da4-1a6b2b70c524">
 </div>
 
 ## Create Models with Sequelize-cli
