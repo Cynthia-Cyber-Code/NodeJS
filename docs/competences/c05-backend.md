@@ -44,7 +44,7 @@
 | Sign up             | ⏳     |[sign up](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0226ade2c7bb5bb45c5a5096247df377e61d1b25/controllers/auth.controller.js#L14)|
 | bcrypt              | ⏳     |[bycript Module](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/b6d7113d9c4b6d4a97853232cbd793d5b06575f5/package.json#L11), [Salt](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/b6d7113d9c4b6d4a97853232cbd793d5b06575f5/controllers/auth.controller.js#L26), [Compare](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/b6d7113d9c4b6d4a97853232cbd793d5b06575f5/controllers/auth.controller.js#L64)|
 | jwt                 | ⏳     |[JWT Module](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0226ade2c7bb5bb45c5a5096247df377e61d1b25/package.json#L18), [Token](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0226ade2c7bb5bb45c5a5096247df377e61d1b25/controllers/auth.controller.js#L82), [verifyJWT](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0226ade2c7bb5bb45c5a5096247df377e61d1b25/middleware/verifyJWT.js)|
-| Mot de passe oublié | ⏳     |[ForgottenPassword]()|
+| Mot de passe oublié | ⏳     |[ForgottenPassword](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/f759e2adbb9023ed3eea5f070405250e45b404a8/controllers/auth.controller.js#L89)|
 
 ## Outils, méthodes et docs
 
