@@ -9,15 +9,16 @@ exports.allReservations = (req, res, next) => {
   });
 };
 
-// exports.allReservationsUser = (req, res, next) => {
-//     Reservation.findAll({
-//         where: { id: req.auth.userId }
-//     }
-//     ).then(reservation => {
-//         console.log(reservation);
-//         res.status(200).json({message: "Reservation delete"});
-//     });
-// };
+/* GET reservation  of the UserCurrent*/
+exports.allReservationsUser = (req, res) => {
+    Reservation.findAll({
+        where: { id: req.auth.userId }
+    }
+    ).then(reservation => {
+        console.log(reservation);
+        res.status(200).json({reservation});
+    });
+};
 
 // Post
 exports.addReservation = (req, res) => {

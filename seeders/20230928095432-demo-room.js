@@ -1,9 +1,9 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface) {
-    return queryInterface.bulkInsert("Room", [
+    return queryInterface.bulkInsert("Rooms", [
       {
-        roomId: Math.random() * 10,
+        name: "Sea view and nearby to the bar",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -11,6 +11,6 @@ module.exports = {
   },
 
   async down(queryInterface) {
-    return queryInterface.bulkDelete("Room", null, {});
+    return queryInterface.bulkDelete("Rooms", null, {});
   },
 };

@@ -29,8 +29,8 @@ exports.signup = async (req, res) => {
 
   const user = new User({
     userRole: "customers",
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
+    firstName: req.body.firstname,
+    lastName: req.body.lastname,
     email: req.body.email,
     phone: req.body.phone,
     userPassword: hashedPassword,
