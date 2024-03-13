@@ -4,7 +4,7 @@ const router = express.Router();
 
 const { User } = require("../db");
 const reservationController = require("../controllers/reservation.controller");
-const MealController = require("../controllers/Meal.controller");
+const mealController = require("../controllers/meal.controller");
 
 function hasRole(roles) {
   return async (req, res, next) => {
@@ -20,9 +20,16 @@ function hasRole(roles) {
 }
 // Access Admin
 router.get("/", hasRole(["isAdmin"]), reservationController.allReservations);
-router.put("/modify", hasRole(["isAdmin"]), reservationController.changeReservation);
-// router.delete("/deleteReservations", hasRole(["isAdmin"]), reservationController);
-router.delete("/delete", hasRole(["isAdmin"]), reservationController.deleteReservation);
+router.put(
+  "/modify",
+  hasRole(["isAdmin"]),
+  reservationController.changeReservation,
+);
+router.delete(
+  "/delete",
+  hasRole(["isAdmin"]),
+  reservationController.deleteReservation,
+);
 
 // Access All users
 router.get("/currentUser", reservationController.allReservationsUser);
@@ -30,10 +37,10 @@ router.post("/", reservationController.addReservation);
 router.put("/", reservationController.changeReservation);
 router.delete("/", reservationController.deleteReservation);
 
-//Access Meals
-router.get("/Meals", MealController.allMeals);
-router.post("/Meals", MealController.addMeal);
-router.put("/Meals", MealController.updateMeal);
-router.delete("/Meals", MealController.deleteMeal);
+// Access Meals
+router.get("/Meals", mealController.allMeals);
+router.post("/Meals", mealController.addMeal);
+router.put("/Meals", mealController.updateMeal);
+router.delete("/Meals", mealController.deleteMeal);
 
 module.exports = router;

@@ -3,28 +3,29 @@ const { Reservation } = require("../db");
 /* GET reservation */
 exports.allReservations = (req, res) => {
   Reservation.findAll()
-  .then((reservations) => {
-    // Send all reservations to Client
-    return res.status(200).json(reservations);
-  })
-  .catch((error) => {
-    console.error(error);
-    return res.status(422).json({ "error": error });
-  });
-};
-
-/* GET reservation  of the UserCurrent*/
-exports.allReservationsUser = (req, res) => {
-    Reservation.findAll({
-        where: { id: req.auth.userId }
-    }
-    ).then(reservation => {
-        console.log(reservation);
-        res.status(200).json({reservation});
+    .then((reservations) => {
+      // Send all reservations to Client
+      console.log(reservations);
+      return res.status(200).json(reservations);
     })
     .catch((error) => {
       console.error(error);
-      return res.status(422).json({ "error": error });
+      return res.status(422).json({ error });
+    });
+};
+
+/* GET reservation of the UserCurrent */
+exports.allReservationsUser = (req, res) => {
+  Reservation.findAll({
+    where: { id: req.auth.userId },
+  })
+    .then((reservation) => {
+      console.log(reservation);
+      res.status(200).json({ reservation });
+    })
+    .catch((error) => {
+      console.error(error);
+      return res.status(422).json({ error });
     });
 };
 

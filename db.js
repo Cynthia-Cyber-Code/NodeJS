@@ -1,8 +1,9 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
 const dotenv = require("dotenv");
+
 dotenv.config();
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV || "development";
 const config = require("./config/config")[env];
 
 const sequelize = new Sequelize(
@@ -16,18 +17,23 @@ const sequelize = new Sequelize(
 );
 
 const Reservation = require("./models/reservation.model")(sequelize, DataTypes);
+
 console.log(Reservation);
 
-const Meal = require("./models/Meal.model")(sequelize, DataTypes);
+const Meal = require("./models/meal.model")(sequelize, DataTypes);
+
 console.log(Meal);
 
 const Room = require("./models/room.model")(sequelize, DataTypes);
+
 console.log(Room);
 
 const Spot = require("./models/spot.model")(sequelize, DataTypes);
+
 console.log(Spot);
 
 const User = require("./models/user.model")(sequelize, DataTypes);
+
 console.log(User);
 
 module.exports = {
