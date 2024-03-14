@@ -1,4 +1,4 @@
-const { Reservation } = require("../db");
+const { Reservation } = require("../utils/db");
 
 /* GET reservation */
 exports.allReservations = (req, res) => {

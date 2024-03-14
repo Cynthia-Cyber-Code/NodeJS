@@ -1,4 +1,4 @@
-const { Room } = require("../db");
+const { Room } = require("../utils/db");
 
 /* GET rooms */
 exports.allRooms = (req, res, next) => {

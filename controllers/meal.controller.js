@@ -1,4 +1,4 @@
-const { Meal, Reservation } = require("../db");
+const { Meal, Reservation } = require("../utils/db");
 
 // GET reservation of the UserCurrent
 exports.allMeals = (req, res) => {

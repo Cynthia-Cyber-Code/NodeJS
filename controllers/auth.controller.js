@@ -6,7 +6,7 @@ const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-const { User } = require("../db");
+const { User } = require("../utils/db");
 
 const { SECRET_KEY, HOTMAIL_ADDRESS } = process.env;
 
