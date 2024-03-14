@@ -20,13 +20,13 @@
 | Sanitisation avec Joi                                   |   ❌    |            |
 | Accès aux données restreint par rôle                    |   ✅    |[Function Role](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/b6d7113d9c4b6d4a97853232cbd793d5b06575f5/routes/user.route.js#L9), [Exemple AllUsers](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/b6d7113d9c4b6d4a97853232cbd793d5b06575f5/routes/user.route.js#L22)|
 | Implémentation du champ updatedAt dans les modèles      |   ✅    |[updatedAt](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/seeders/20230928094833-demo-user.js#L13), [Exemple Screen Table Plus with updatedAt in User](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0b5d7cdae90708c29d3dc4ff8ba694faf896edc5/docs/Screens/updatedAt%20in%20User%20Model%20about%20TablePlus.png)|
-| Utilisation de try/catch pour la gestion d'erreurs      |   🟠     |[Exemple try catch in the project](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/middleware/verifyJWT.js#L14), [Then/Catch](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/controllers/user.controller.js#L70)|
+| Utilisation de try/catch pour la gestion d'erreurs      |    ⏳     |[Exemple try catch in the project](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/middleware/verifyJWT.js#L14), [Try/Catch](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/f6f352d5dcd9559c56a53153b6be23b9d824a071/controllers/auth.controller.js#L14)|
 
 ## Logs
 
 | Tâche                                                    | Validée | Validation |
 | -------------------------------------------------------- | :-----: | ---------- |
-| Configuration et utilisation des logs (Morgan + Winston) |   ❌    |            |
+| Configuration et utilisation des logs (Morgan + Winston) |    ⏳    |[Morgan](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/f6f352d5dcd9559c56a53153b6be23b9d824a071/package.json#L19), [Winston](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/f6f352d5dcd9559c56a53153b6be23b9d824a071/package.json#L26), [Use logs](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/f6f352d5dcd9559c56a53153b6be23b9d824a071/app.js#L22), [logs case](https://github.com/Cynthia-Cyber-Code/NodeJS/tree/f6f352d5dcd9559c56a53153b6be23b9d824a071/logs)|
 
 ## Tests
 

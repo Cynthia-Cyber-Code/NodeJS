@@ -1,6 +1,3 @@
-const express = require("express");
-
-const router = express.Router();
 const nodemailer = require("nodemailer");
 
 const jwt = require("jsonwebtoken");
@@ -12,81 +9,92 @@ const { SECRET_KEY, HOTMAIL_ADDRESS } = process.env;
 
 // Sign-up (Inscription)
 exports.signup = async (req, res) => {
-  console.log(req.body);
-  const { email } = req.body;
-  const emailRegexp =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+  try {
+    console.log(req.body);
+    const { email } = req.body;
+    const emailRegexp =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
-  console.log(emailRegexp.test(email));
-  if (!emailRegexp.test(email))
-    return res
-      .status(400)
-      .json({ message: "Veuillez renseigner un email valide." });
+    console.log(emailRegexp.test(email));
+    if (!emailRegexp.test(email))
+      return res
+        .status(400)
+        .json({ message: "Veuillez renseigner un email valide." });
 
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(req.body.userPassword, salt);
-  console.log(hashedPassword);
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(req.body.userPassword, salt);
+    console.log(hashedPassword);
 
-  const user = new User({
-    userRole: "customers",
-    firstName: req.body.firstname,
-    lastName: req.body.lastname,
-    email: req.body.email,
-    phone: req.body.phone,
-    userPassword: hashedPassword,
-  });
-  const userExist = await User.findOne({ where: { email: req.body.email } });
-  console.log(userExist);
-  if (userExist)
-    return res.status(403).json({
-      message: "Vous ne pouvez pas vous inscrire avec ces cordonnées.",
+    const user = new User({
+      userRole: "customers",
+      firstName: req.body.firstname,
+      lastName: req.body.lastname,
+      email: req.body.email,
+      phone: req.body.phone,
+      userPassword: hashedPassword,
     });
+    const userExist = await User.findOne({ where: { email: req.body.email } });
+    console.log(userExist);
+    if (userExist)
+      return res.status(403).json({
+        message: "Vous ne pouvez pas vous inscrire avec ces cordonnées.",
+      });
 
-  return user
-    .save()
-    .then(() => res.status(201).json({ message: "Utilisateur créé" }))
-    .catch((error) => res.status(400).json({ error }));
+    return user
+      .save()
+      .then(() => res.status(201).json({ message: "Utilisateur créé" }))
+      .catch((error) => res.status(400).json({ error }));
+  } catch (error) {
+    return console.error("Erreur d'enregistrement d'utilisateur ", error);
+  }
 };
 
 // Sign-in (Connexion)
 exports.signin = async (req, res) => {
-  const user = await User.findOne({
-    where: {
-      email: req.body.email,
-    },
-  });
-  // console.log(user);
-  if (!user)
-    return res.status(400).json({
-      message: "Le nom d'utilisateur, l'email ou le mot de passe est incorrect",
+  try {
+    const user = await User.findOne({
+      where: {
+        email: req.body.email,
+      },
     });
+    // console.log(user);
+    if (!user)
+      return res.status(400).json({
+        message:
+          "Le nom d'utilisateur, l'email ou le mot de passe est incorrect",
+      });
 
-  const validPassword = await bcrypt.compare(
-    req.body.userPassword,
-    user.userPassword,
-  );
-  if (!validPassword)
-    return res.status(400).json({
-      message: "Le nom d'utilisateur, l'email ou le mot de passe est incorrect",
-    });
+    const validPassword = await bcrypt.compare(
+      req.body.userPassword,
+      user.userPassword,
+    );
+    if (!validPassword)
+      return res.status(400).json({
+        message:
+          "Le nom d'utilisateur, l'email ou le mot de passe est incorrect",
+      });
 
-  const payload = {
-    id: user.id,
-    email: user.email,
-    userPassword: user.userPassword,
-    userRole: user.userRole,
-  };
+    const payload = {
+      id: user.id,
+      email: user.email,
+      userPassword: user.userPassword,
+      userRole: user.userRole,
+    };
 
-  // console.log(payload);
+    // console.log(payload);
 
-  const token = jwt.sign(payload, SECRET_KEY, { expiresIn: 60 * 60 * 24 });
-  if (!token) return res.status(500).send({ message: "error return Token" });
+    const token = jwt.sign(payload, SECRET_KEY, { expiresIn: 60 * 60 * 24 });
+    if (!token) return res.status(500).send({ message: "error return Token" });
 
-  res.body = token;
-  return res.status(200).json({ jwt: token, status: res.status });
+    res.body = token;
+    return res.status(200).json({ jwt: token, status: res.status });
+  } catch (error) {
+    return console.error("Erreur d'accès au compte: ", error);
+  }
 };
 
-router.post("/forgotPassword", async (req, res) => {
+// to Forget Password routes
+exports.forgottenPassword = async (req, res) => {
   try {
     const user = await User.findOne({ where: { email: req.body.email } });
     if (!user) {
@@ -134,4 +142,4 @@ router.post("/forgotPassword", async (req, res) => {
     console.error(error);
     return res.status(500).json({ message: "Error in password reset process" });
   }
-});
+};

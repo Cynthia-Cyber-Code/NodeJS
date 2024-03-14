@@ -16,7 +16,10 @@ const sequelize = new Sequelize(
   },
 );
 
-const Reservation = require("../models/reservation.model")(sequelize, DataTypes);
+const Reservation = require("../models/reservation.model")(
+  sequelize,
+  DataTypes,
+);
 
 console.log(Reservation);
 

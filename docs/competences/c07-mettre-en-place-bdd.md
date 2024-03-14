@@ -16,7 +16,7 @@
 
 | Tâche                                                | Validée | Validation |
 | ---------------------------------------------------- | :-----: | ---------- |
-| Setup indiqué dans la documentation                  |   🟠    |            |
+| Setup indiqué dans la documentation                  |   ⏳     |[README.md](https://github.com/Cynthia-Cyber-Code/NodeJS?tab=readme-ov-file#)|
 | Fichier et dossier modèle                            |   ✅    |[Modèles](https://github.com/Cynthia-Cyber-Code/NodeJS/tree/70ba3ef0f0994c46ecb428888e0dc23d8be8f3d5/models), [Exemple User Model](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/models/user.model.js)|
 | Génération de seed automatisée                       |   ✅    |[seeders](https://github.com/Cynthia-Cyber-Code/NodeJS/tree/0033700a12c50bddef73d765e9df0ab0ff790c23/seeders),[Screen Launch seed datatbase](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0b5d7cdae90708c29d3dc4ff8ba694faf896edc5/docs/Screens/%C2%A0Screen%20launch%20screen%20seed%20all%20with%20sequelize-cli%C2%A0.png)|
 | Implémentation de différence base (dev/test/preprod) |   ✅    |[import config Database](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/db.js#L6)|
@@ -40,4 +40,4 @@
 
 | Tâche                                  | Validée | Validation |
 | -------------------------------------- | :-----: | ---------- |
-| - LogsUtilisation de Morgan et Winston |   ❌    |            |
+| - LogsUtilisation de Morgan et Winston |    ⏳    |[Morgan](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/f6f352d5dcd9559c56a53153b6be23b9d824a071/package.json#L19), [Winston](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/f6f352d5dcd9559c56a53153b6be23b9d824a071/package.json#L26), [Use logs](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/f6f352d5dcd9559c56a53153b6be23b9d824a071/app.js#L22), [logs case](https://github.com/Cynthia-Cyber-Code/NodeJS/tree/f6f352d5dcd9559c56a53153b6be23b9d824a071/logs)|
