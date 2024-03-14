@@ -10,16 +10,23 @@ const indexRouter = require("./routes/index");
 
 const app = express();
 
-app.use(cors({ origin: "http://localhost:3000" }));
+// app.use(cors({ origin: "http://localhost:3000" }));
+const corsOptions = {
+  origin: "http://localhost:5173",
+  optionsSuccessStatus: 200,
+};
 
+// Middleware
+app.use(cors(corsOptions));
 app.use(morganMiddleware);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 // Logs
-logger.http('Debut session')
+logger.http("Debut session");
 
 app.use("/api", indexRouter);
 

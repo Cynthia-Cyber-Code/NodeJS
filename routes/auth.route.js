@@ -8,4 +8,6 @@ const authController = require("../controllers/auth.controller");
 router.post("/signup", passwordCheck, authController.signup);
 router.post("/signin", authController.signin);
 
+router.post("/forgotPassword", authController.forgottenPassword);
+
 module.exports = router;

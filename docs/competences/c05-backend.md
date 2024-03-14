@@ -50,10 +50,10 @@
 
 | Tâches                                                  | Statut | Validation |
 | ------------------------------------------------------- | ------ | ---------- |
-| POSTMAN                                                 | ✅     |[README.md/ Resultat Postman](https://github.com/Cynthia-Cyber-Code/NodeJS?tab=readme-ov-file#resultat)|
+| POSTMAN                                                 | ✅     |[README.md/ Resultat Postman](https://github.com/Cynthia-Cyber-Code/NodeJS?tab=readme-ov-file#resultat), [arborescence]()|
 | 🔜 Validation des données (express validator)          | ❌     |            |
 | 🔜 Purification des données (JOI)                      | ❌     |            |
-| 🔜 Mise en place des logs (morgan et autre winston)    | ❌     |            |
+| 🔜 Mise en place des logs (morgan et autre winston)    | ⏳     |[Morgan](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/f6f352d5dcd9559c56a53153b6be23b9d824a071/package.json#L19), [Winston](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/f6f352d5dcd9559c56a53153b6be23b9d824a071/package.json#L26), [Use logs](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/f6f352d5dcd9559c56a53153b6be23b9d824a071/app.js#L22), [logs case](https://github.com/Cynthia-Cyber-Code/NodeJS/tree/f6f352d5dcd9559c56a53153b6be23b9d824a071/logs)|
 | 🔜 Schema bdd / schema du projet / explication du code | ✅     |[README.md](https://github.com/Cynthia-Cyber-Code/NodeJS?tab=readme-ov-file#)|
 | 🔜 5 sources de veille                                 | ❌     |            |
 | 🔜 Explication d’un concept                            | ❌     |            |
