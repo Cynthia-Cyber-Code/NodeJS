@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const { User } = require("../db");
+const { User } = require("../utils/db");
 const spotController = require("../controllers/spot.controller");
 
 function hasRole(roles) {

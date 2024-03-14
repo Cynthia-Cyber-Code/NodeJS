@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
 
-const { User } = require("../db");
+const { User } = require("../utils/db");
 
 /* GET users */
 exports.allUsers = (req, res, next) => {

@@ -1,4 +1,4 @@
-const { Spot } = require("../db");
+const { Spot } = require("../utils/db");
 
 /* GET spots */
 exports.allSpots = (req, res, next) => {
