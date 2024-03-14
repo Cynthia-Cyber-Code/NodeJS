@@ -20,12 +20,7 @@ function hasRole(roles) {
 }
 // Access Admin
 router.get("/", hasRole(["isAdmin"]), userController.allUsers);
-router.post(
-  "/AddUser",
-  hasRole(["isAdmin"]),
-  passwordCheck,
-  userController.addUserByAdmin,
-);
+router.post("/AddUser", hasRole(["isAdmin"]), passwordCheck, userController.addUserByAdmin);
 router.put("/roleAdmin", hasRole(["isAdmin"]), userController.createAdmin);
 router.delete("/deleteUser", hasRole(["isAdmin"]), userController.modidyUser);
 

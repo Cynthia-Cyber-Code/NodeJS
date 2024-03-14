@@ -80,17 +80,17 @@ exports.addUserByAdmin = async (req, res, next) => {
 };
 
 // Put
-exports.modifyCurrentUser = (req, res, next) => {
-  const { firstname } = req.body;
-  const { lastname } = req.body;
+exports.modifyCurrentUser = (req, res) => {
+  const { firstName } = req.body;
+  const { lastName } = req.body;
   const { email } = req.body;
   const { phone } = req.body;
   const { userPassword } = req.body;
 
   User.update(
     {
-      firstname,
-      lastname,
+      firstName,
+      lastName,
       email,
       phone,
       userPassword,
@@ -99,37 +99,24 @@ exports.modifyCurrentUser = (req, res, next) => {
       where: { id: req.auth.userId },
     },
   ).then((user) => {
-    if (typeof userRole !== "string") {
-      res.status(422).json({
-        error: "La date n'est n'est pas bon(on attend un format date)",
-      });
-    }
-    if (
-      typeof firstname !== "string" ||
-      typeof lastname !== "string" ||
-      typeof email !== "string" ||
-      typeof phone !== "string"
-    ) {
-      res.status(422).json({ error: "Verifier vos coordonnées" });
-    }
     console.log(user);
-    res.status(200).json({ message: "enregistrée" });
-    next();
-  });
+    return res.status(200).json({ message: "enregistrée" });
+  })
+  .catch((error) => res.status(400).json({ error }));
 };
 
 // Put users by admin
 exports.modidyUser = (req, res, next) => {
-  const { firstname } = req.body;
-  const { lastname } = req.body;
+  const { firstName } = req.body;
+  const { lastName } = req.body;
   const { email } = req.body;
   const { phone } = req.body;
   const { userPassword } = req.body;
 
   User.update(
     {
-      firstname,
-      lastname,
+      firstName,
+      lastName,
       email,
       phone,
       userPassword,
@@ -172,7 +159,7 @@ exports.deleteCurentUser = (req, res, next) => {
 };
 
 // Delete User
-exports.deleteCurentUser = (req, res, next) => {
+exports.deleteUser = (req, res, next) => {
   User.destroy({
     where: { id: req.body.id },
   }).then((user) => {
