@@ -19,10 +19,10 @@ const level = () => {
 // Couleurs choisies pour chaque élément
 const colors = {
     error: 'red',
-    warn: 'yellow',
-    info: 'green',
-    http: 'magenta',
-    debug: 'white',
+    warn: 'orange',
+    info: 'blue',
+    http: 'white',
+    debug: 'green',
 } 
 
 winston.addColors(colors)
