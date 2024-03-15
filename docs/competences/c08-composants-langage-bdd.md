@@ -15,7 +15,7 @@
 
 | Tâche                                                   | Validée | Validation |
 | ------------------------------------------------------- | :-----: | ---------- |
-| Utilisation d'Express Validator                         |   ❌    |            |
+| Utilisation d'Express Validator                         |   ⏳    |[Express Validator Module](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/ae64758e4e6733b56eadc4a489a29b657ff190ef/package.json#L18), [user validation](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/ae64758e4e6733b56eadc4a489a29b657ff190ef/middleware/validators/user.validation.js), [auth route with express Validator](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/ae64758e4e6733b56eadc4a489a29b657ff190ef/routes/auth.route.js#L5), [use Express Validator in auth controller](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/ae64758e4e6733b56eadc4a489a29b657ff190ef/controllers/auth.controller.js#L14)|
 | Intégration de bcrypt pour le hashage des mots de passe |   ✅    |[Hashed Password](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/controllers/auth.controller.js#L27)|
 | Sanitisation avec Joi                                   |   ❌    |            |
 | Accès aux données restreint par rôle                    |   ✅    |[Function Role](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/b6d7113d9c4b6d4a97853232cbd793d5b06575f5/routes/user.route.js#L9), [Exemple AllUsers](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/b6d7113d9c4b6d4a97853232cbd793d5b06575f5/routes/user.route.js#L22)|

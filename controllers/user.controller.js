@@ -98,11 +98,12 @@ exports.modifyCurrentUser = (req, res) => {
     {
       where: { id: req.auth.userId },
     },
-  ).then((user) => {
-    console.log(user);
-    return res.status(200).json({ message: "enregistrée" });
-  })
-  .catch((error) => res.status(400).json({ error }));
+  )
+    .then((user) => {
+      console.log(user);
+      return res.status(200).json({ message: "enregistrée" });
+    })
+    .catch((error) => res.status(400).json({ error }));
 };
 
 // Put users by admin

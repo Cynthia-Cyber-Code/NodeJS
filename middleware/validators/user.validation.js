@@ -2,37 +2,33 @@ const { body } = require("express-validator");
 
 // using chain api validation from express-validator
 const userDataValidateChainMethod = [
-    body("firstName")
-        .exists({ checkFalsy: true })
-        .withMessage("firstname is required")
-        .isString()
-        .withMessage("firstname should be string"),
-    body("lastName")
-        .exists({ checkFalsy: true })
-        .withMessage("lastname is required")
-        .isString()
-        .withMessage("lastname should be string"),
-    body("userPassword")
-        .exists()
-        .withMessage("Password is required")
-        .isString()
-        .withMessage("Password should be string")
-        .isLength({ min: 6 })
-        .withMessage("Password should be at least 6 characters"),
-    body("email")
-        .exists()
-        .isEmail()
-        .withMessage("Provide valid email"),
-    body("phone")
-        .optional()
-        .isString()
-        .withMessage("phone number should be string")
-        .custom((value) => {
-        if (value.length !== 10) {
-            return Promise.reject("Phone number should be 10 digits");
-        } else {
-            return true;
-        }
+  body("firstName")
+    .exists({ checkFalsy: true })
+    .withMessage("firstname is required")
+    .isString()
+    .withMessage("firstname should be string"),
+  body("lastName")
+    .exists({ checkFalsy: true })
+    .withMessage("lastname is required")
+    .isString()
+    .withMessage("lastname should be string"),
+  body("userPassword")
+    .exists()
+    .withMessage("Password is required")
+    .isString()
+    .withMessage("Password should be string")
+    .isLength({ min: 6 })
+    .withMessage("Password should be at least 6 characters"),
+  body("email").exists().isEmail().withMessage("Provide valid email"),
+  body("phone")
+    .optional()
+    .isString()
+    .withMessage("phone number should be string")
+    .custom((value) => {
+      if (value.length !== 10) {
+        return Promise.reject(new Error("Phone number should be 10 digits"));
+      }
+      return true;
     }),
 ];
 
@@ -73,5 +69,5 @@ const userDataValidateChainMethod = [
 // };
 
 module.exports = {
-    userDataValidateChainMethod,
+  userDataValidateChainMethod,
 };

@@ -35,7 +35,7 @@
 
 | Tâche                                                           | Validée | Lien |
 | --------------------------------------------------------------- | ------- | ---- |
-| 🔜 Intégrer express-validator pour la validation des données   | ❌      |      |
+| 🔜 Intégrer express-validator pour la validation des données   | ⏳      |[Express Validator Module](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/ae64758e4e6733b56eadc4a489a29b657ff190ef/package.json#L18), [user validation](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/ae64758e4e6733b56eadc4a489a29b657ff190ef/middleware/validators/user.validation.js), [auth route with express Validator](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/ae64758e4e6733b56eadc4a489a29b657ff190ef/routes/auth.route.js#L5), [use Express Validator in auth controller](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/ae64758e4e6733b56eadc4a489a29b657ff190ef/controllers/auth.controller.js#L14)|
 | 🔜 Nettoyer les données entrantes pour prévenir les injections | ❌      |      |
 | Établir une nomenclature cohérente pour le code                 | ✅      |      |
 | Commenter et expliquer les segments de code complexes           | ✅      |      |

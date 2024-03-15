@@ -33,7 +33,7 @@
 
 | Tâche                                             | Validée | Validation |
 | ------------------------------------------------- | :-----: | ---------- |
-| 🔜 Validation des entrées avec Express Validator |   ❌    |            |
+| 🔜 Validation des entrées avec Express Validator |   ⏳    |[Express Validator Module](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/ae64758e4e6733b56eadc4a489a29b657ff190ef/package.json#L18), [user validation](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/ae64758e4e6733b56eadc4a489a29b657ff190ef/middleware/validators/user.validation.js), [auth route with express Validator](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/ae64758e4e6733b56eadc4a489a29b657ff190ef/routes/auth.route.js#L5), [use Express Validator in auth controller](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/ae64758e4e6733b56eadc4a489a29b657ff190ef/controllers/auth.controller.js#L14)|
 | 🔜 Sanitisation des données avec Joi             |   ❌    |            |
 
 ## Diagrammes

@@ -1,8 +1,5 @@
 const request = require("supertest");
-const jwt = require("jsonwebtoken");
 const app = require("../app");
-
-const { SECRET_KEY } = process.env;
 
 describe("GET /api/", () => {
   it("should return a 200", async () => {
