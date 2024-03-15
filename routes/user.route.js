@@ -4,7 +4,9 @@ const router = express.Router();
 
 const { User } = require("../utils/db");
 const userController = require("../controllers/user.controller");
+
 const passwordCheck = require("../middleware/validate_password");
+const { userDataValidateChainMethod } = require("../middleware/validators/user.validation");
 
 function hasRole(roles) {
   return async (req, res, next) => {
@@ -20,7 +22,7 @@ function hasRole(roles) {
 }
 // Access Admin
 router.get("/", hasRole(["isAdmin"]), userController.allUsers);
-router.post("/AddUser", hasRole(["isAdmin"]), passwordCheck, userController.addUserByAdmin);
+router.post("/AddUser", hasRole(["isAdmin"]), userDataValidateChainMethod, passwordCheck, userController.addUserByAdmin);
 router.put("/roleAdmin", hasRole(["isAdmin"]), userController.createAdmin);
 router.delete("/deleteUser", hasRole(["isAdmin"]), userController.modidyUser);
 

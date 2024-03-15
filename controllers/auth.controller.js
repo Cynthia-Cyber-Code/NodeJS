@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+const { validationResult } = require("express-validator");
 
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -10,16 +11,14 @@ const { SECRET_KEY, HOTMAIL_ADDRESS } = process.env;
 // Sign-up (Inscription)
 exports.signup = async (req, res) => {
   try {
-    console.log(req.body);
-    const { email } = req.body;
-    const emailRegexp =
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    const errors = validationResult(req);
 
-    console.log(emailRegexp.test(email));
-    if (!emailRegexp.test(email))
-      return res
-        .status(400)
-        .json({ message: "Veuillez renseigner un email valide." });
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        success: false,
+        errors: errors.array(),
+      });
+    }
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.userPassword, salt);
@@ -57,7 +56,6 @@ exports.signin = async (req, res) => {
         email: req.body.email,
       },
     });
-    // console.log(user);
     if (!user)
       return res.status(400).json({
         message:
