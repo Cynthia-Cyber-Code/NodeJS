@@ -9,7 +9,7 @@ describe("GET /api/", () => {
 });
 
 describe("POST /api/auth/signup", () => {
-  it("should return a 403 error", async () => {
+  it("should return a 400 error", async () => {
     const res = await request(app)
       .post("/api/auth/signup")
       .expect("Content-Type", /json/)
@@ -20,7 +20,7 @@ describe("POST /api/auth/signup", () => {
         phone: "00.00.00.00.00",
         userPassword: "Azerty1234",
       })
-      .expect(403);
+      .expect(400);
     return res;
   });
 });
