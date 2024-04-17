@@ -19,7 +19,7 @@
     "joi": "^17.12.2",
     "jsonwebtoken": "^9.0.2",
     "morgan": "~1.9.1",
-    "mysql2": "^3.9.2",
+    "mysql2": "^3.9.4",
     "nodemailer": "^6.9.8",
     "password-validator": "^5.3.0",
     "pg": "^8.11.3",
