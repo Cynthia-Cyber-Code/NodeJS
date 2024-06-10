@@ -11,7 +11,7 @@
 | Tâche                              | Validée | Validation |
 | ---------------------------------- | :-----: | ---------- |
 | Models nommés selon une norme      |   ✅    |[Modèles](https://github.com/Cynthia-Cyber-Code/NodeJS/tree/70ba3ef0f0994c46ecb428888e0dc23d8be8f3d5/models)|
-| Schema physique de base de données |   ❌    |            |
-| Schema entite association          |   ❌    |            |
+| Schema physique de base de données |   ✅    |            |
+| Schema entite association          |   ✅    |            |
 | Diagramme de classe                |   ❌    |            |
 | Association implémentée            |   ❌    |            |
