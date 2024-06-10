@@ -1,7 +1,14 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-  class Reservation extends Model {}
+  class Reservation extends Model {
+    static associate(models) {
+      Reservation.belongsToMany(models.Spot, {
+        through: 'ReservationSpots',
+        foreignKey: 'ReservationId'
+      });
+    }
+  }
   Reservation.init(
     {
       numberOfCustomers: DataTypes.INTEGER,

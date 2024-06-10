@@ -1,6 +1,7 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
 const dotenv = require("dotenv");
+const e = require("express");
 
 dotenv.config();
 const env = process.env.NODE_ENV || "development";
@@ -16,28 +17,34 @@ const sequelize = new Sequelize(
   },
 );
 
-const Reservation = require("../models/reservation.model")(
-  sequelize,
-  DataTypes,
-);
-
-console.log(Reservation);
-
-const Meal = require("../models/meal.model")(sequelize, DataTypes);
-
-console.log(Meal);
+const User = require("../models/user.model")(sequelize, DataTypes);
+console.log(User);
 
 const Room = require("../models/room.model")(sequelize, DataTypes);
-
 console.log(Room);
 
 const Spot = require("../models/spot.model")(sequelize, DataTypes);
-
 console.log(Spot);
 
-const User = require("../models/user.model")(sequelize, DataTypes);
+const Reservation = require("../models/reservation.model")(sequelize, DataTypes);
+console.log(Reservation);
 
-console.log(User);
+const Meal = require("../models/meal.model")(sequelize, DataTypes);
+console.log(Meal);
+
+const Membership = require("../models/membership.model")(sequelize, DataTypes);
+console.log(Membership);
+
+Reservation.belongsToMany(Spot, { through: 'ReservationSpots' });
+Spot.belongsToMany(Reservation, { through: 'ReservationSpots' });
+
+sequelize.sync({force: true}).then(
+  async () => {
+    console.log("database created")
+  }
+).catch(e => {
+  console.error(e)
+})
 
 module.exports = {
   Reservation,
@@ -45,4 +52,5 @@ module.exports = {
   User,
   Room,
   Spot,
+  Membership
 };

@@ -11,6 +11,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING,
       },
+      roomId: {
+        type: Sequelize.INTEGER,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

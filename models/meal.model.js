@@ -3,12 +3,12 @@ const { Reservation } = require("./reservation.model");
 
 module.exports = (sequelize, DataTypes) => {
   class Meal extends Model {
-    static associate() {
-      Meal.hasOne(Reservation, {
-        foreignKey: "reservationId",
-        onDelete: "CASCADE",
-      });
-    }
+    // static associate() {
+    //   Meal.hasOne(Reservation, {
+    //     foreignKey: "reservationId",
+    //     onDelete: "CASCADE",
+    //   });
+    // }
   }
   Meal.init(
     {
