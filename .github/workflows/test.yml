@@ -54,6 +54,7 @@ jobs:
           echo "TEST_DB_PASSWORD=postgres" >> $GITHUB_ENV
           echo "TEST_DB_NAME=testdb" >> $GITHUB_ENV
           echo "TEST_DB_HOST=localhost" >> $GITHUB_ENV
+          echo "SECRET_KEY=secretkey23456" >> $GITHUB_ENV
 
       - name: Run migrations
         run: npx sequelize-cli db:migrate

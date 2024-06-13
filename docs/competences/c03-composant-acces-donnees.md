@@ -21,7 +21,7 @@
 | Création des dossiers et fichiers Routes (User, Room, Spot...)  | ✅      | [Routes](https://github.com/Cynthia-Cyber-Code/NodeJS/tree/main/routes)     |
 | Création des dossiers et fichiers Modèles (User, Room, Spot...) | ✅      | [Models](https://github.com/Cynthia-Cyber-Code/NodeJS/tree/cfd3fbf9e7c28ee4d87051abdec347a8f319fa41/models)   |
 | Mise en place des contrôleurs (User, Room, Spot...)             | ✅      | [Controllers](https://github.com/Cynthia-Cyber-Code/NodeJS/tree/e67b7c575098b3fa0cf0a6773667fcd4d11aecc6/controllers)    |
-| 🔜 Implémenter les services                                    | ❌       |      |
+| 🔜 Implémenter les services                                    | 🟠       |      |
 
 ## Sécurité
 
@@ -58,4 +58,4 @@
 
 | Tâche                                               | Validée | Lien |
 | --------------------------------------------------- | ------- | ---- |
-| 🔜 Préparer la documentation de l'API avec Swagger | ❌      |      |
+| 🔜 Préparer la documentation de l'API avec Swagger | 🟠      |      |
