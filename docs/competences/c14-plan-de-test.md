@@ -18,7 +18,7 @@
 
 | Tâche                                 | Validée | Lien vers le fichier/ligne de code |
 | ------------------------------------- | :-----: | ---------------------------------- |
-| 🔜 Élaboration de la matrice de test |   ❌    |[tests file](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/__test__/app.test.js), [screen valide test](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/docs/Screens/Screen%20Test%20validated.png)|
+| 🔜 Élaboration de la matrice de test |   🟠     |[tests file](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/__test__/app.test.js), [screen valide test](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/0033700a12c50bddef73d765e9df0ab0ff790c23/docs/Screens/Screen%20Test%20validated.png)|
 
 ## Tests
 

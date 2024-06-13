@@ -17,9 +17,9 @@
 
 | Tâche                                         | Validée | Validation |
 | --------------------------------------------- | :-----: | ---------- |
-| 🔜 Création des classes                      |   ❌    |            |
+| 🔜 Création des classes                      |   🟠     |[Services]()|
 | 🔜 Application des principes de POO          |   ❌    |            |
-| 🔜 Nommage cohérent et explicite des classes |   ❌    |            |
+| 🔜 Nommage cohérent et explicite des classes |   🟠     |            |
 
 ## Modèles
 
@@ -47,4 +47,4 @@
 
 | Tâche                                                  | Validée | Validation |
 | ------------------------------------------------------ | :-----: | ---------- |
-| Développement de tests unitaires pour chaque composant |   ❌    |            |
+| Développement de tests unitaires pour chaque composant |   🟠    |            |

@@ -25,13 +25,13 @@
 | ------------ | ------ | ---------- |
 | Route        | ✅     |[Routes](https://github.com/Cynthia-Cyber-Code/NodeJS/tree/main/routes)|
 | Controller   | ✅     |[Controllers](https://github.com/Cynthia-Cyber-Code/NodeJS/tree/e67b7c575098b3fa0cf0a6773667fcd4d11aecc6/controllers)|
-| 🔜 Services | ❌     |            |
+| 🔜 Services | 🟠     |[Services]()|
 
 ## POO
 
 | Tâches                   | Statut | Validation |
 | ------------------------ | ------ | ---------- |
-| 🔜 Classe               | ❌     |            |
+| 🔜 Classe               | 🟠      |            |
 | 🔜 Bonnes pratiques POO | ❌     |            |
 
 ## Sécurité
@@ -55,6 +55,6 @@
 | 🔜 Purification des données (JOI)                      | ✅     |[Joi Module](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/23e8a30113e86354ff3cc7ed8b3cb48fb7e2c4f7/package.json#L19), [joi validate](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/23e8a30113e86354ff3cc7ed8b3cb48fb7e2c4f7/routes/auth.route.js#L12), [sign in schema](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/23e8a30113e86354ff3cc7ed8b3cb48fb7e2c4f7/middleware/Schemas/authSchema.js#L11)|
 | 🔜 Mise en place des logs (morgan et autre winston)    | ✅     |[Morgan](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/f6f352d5dcd9559c56a53153b6be23b9d824a071/package.json#L19), [Winston](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/f6f352d5dcd9559c56a53153b6be23b9d824a071/package.json#L26), [Use logs](https://github.com/Cynthia-Cyber-Code/NodeJS/blob/f6f352d5dcd9559c56a53153b6be23b9d824a071/app.js#L22), [logs case](https://github.com/Cynthia-Cyber-Code/NodeJS/tree/f6f352d5dcd9559c56a53153b6be23b9d824a071/logs)|
 | 🔜 Schema bdd / schema du projet / explication du code | ✅     |[README.md](https://github.com/Cynthia-Cyber-Code/NodeJS?tab=readme-ov-file#)|
-| 🔜 5 sources de veille                                 | ❌     |            |
+| 🔜 5 sources de veille                                 | 🟠      |            |
 | 🔜 Explication d’un concept                            | ❌     |            |
 | 🔜 Dossier type d'une démarche de travail              | ❌     |            |
