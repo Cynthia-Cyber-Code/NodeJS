@@ -38,13 +38,13 @@ console.log(Membership);
 Reservation.belongsToMany(Spot, { through: 'ReservationSpots' });
 Spot.belongsToMany(Reservation, { through: 'ReservationSpots' });
 
-sequelize.sync({force: true}).then(
-  async () => {
-    console.log("database created")
-  }
-).catch(e => {
-  console.error(e)
-})
+// sequelize.sync({force: true}).then(
+//   async () => {
+//     console.log("database created")
+//   }
+// ).catch(e => {
+//   console.error(e)
+// })
 
 module.exports = {
   Reservation,

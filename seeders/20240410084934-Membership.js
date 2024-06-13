@@ -7,9 +7,10 @@ module.exports = {
       {
       loyalty_status: "Yes",
       number_of_reservations: Math.floor(Math.random() * 10),
-      expiration_date: new Date() + 5,
+      expiration_date: new Date(),
       createdAt: new Date(),
       updatedAt: new Date(),
+      userId: 1,
     },
   ]);
 },

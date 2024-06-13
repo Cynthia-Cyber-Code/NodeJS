@@ -31,7 +31,7 @@ router.delete(
   reservationController.deleteReservation,
 );
 
-// Access All users
+// Access All reservations only user
 router.get("/currentUser", reservationController.allReservationsUser);
 router.post("/", reservationController.addReservation);
 router.put("/", reservationController.changeReservation);

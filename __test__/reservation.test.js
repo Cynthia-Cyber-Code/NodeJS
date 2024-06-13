@@ -16,7 +16,7 @@ describe("GET /api/reservations", () => {
 });
 
 describe("GET /api/reservations", () => {
-  it("should return a 200 error", async () => {
+  it("should return a 200", async () => {
     const payload = {
       id: 1,
       email: "example@example.com",
@@ -35,7 +35,7 @@ describe("GET /api/reservations", () => {
 });
 
 describe("Post /api/reservations", () => {
-  it("should return a 200 error", async () => {
+  it("should return a 200", async () => {
     const payload = {
       id: 1,
       email: "example@example.com",
@@ -64,7 +64,7 @@ describe("Post /api/reservations", () => {
 });
 
 describe("Put /api/reservations", () => {
-  it("should return a 200 error", async () => {
+  it("should return a 200", async () => {
     const payload = {
       id: 1,
       email: "example@example.com",
@@ -92,7 +92,7 @@ describe("Put /api/reservations", () => {
 });
 
 describe("Delete /api/reservations", () => {
-  it("should return a 200 error", async () => {
+  it("should return a 200", async () => {
     const payload = {
       id: 1,
       email: "example@example.com",
@@ -102,7 +102,7 @@ describe("Delete /api/reservations", () => {
     const token = jwt.sign(payload, SECRET_KEY, { expiresIn: 20 });
 
     const reservation = {
-      reservationId: 5,
+      reservationId: 2,
     };
     console.log(token, payload, reservation);
     const res = await request(app)

@@ -36,8 +36,10 @@ exports.getSpot = (req, res, next) => {
 /* POST  spot */
 exports.postSpot = (req, res, next) => {
   const { name } = req.body;
+  const { roomId } = req.body;
   Spot.create({
     name,
+    roomId
   })
     .then((spot) => {
       console.log(spot);
@@ -54,10 +56,11 @@ exports.postSpot = (req, res, next) => {
 
 // Put
 exports.putSpot = (req, res) => {
-  const { name } = req.body;
+  const { name, roomId } = req.body;
   Spot.update(
     {
       name,
+      roomId
     },
     {
       where: { id: req.body.spotId },

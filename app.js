@@ -7,6 +7,7 @@ const morganMiddleware = require("./middleware/morgan.middleware");
 const logger = require("./utils/logger");
 
 const indexRouter = require("./routes/index");
+const swagger = require("./swagger");
 
 const app = express();
 
@@ -24,6 +25,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+swagger(app)
 
 // Logs
 logger.http("Debut session");

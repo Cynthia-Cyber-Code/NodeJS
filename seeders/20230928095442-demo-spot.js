@@ -4,6 +4,7 @@ module.exports = {
     return queryInterface.bulkInsert("Spots", [
       {
         name: "view facing the sea",
+        roomId: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
